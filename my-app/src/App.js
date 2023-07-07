@@ -6,6 +6,9 @@ import './App.scss';
 
 
 function App() {
+
+
+
   // making the array with all the content for the hexagons
   const wood = new Array(4).fill('wood');
   const weat = new Array(4).fill('weat');
@@ -16,39 +19,34 @@ function App() {
 
   const [allElements, setAllElements] = useState(allElementsInitial);
 
-  let shuffleArray = () => {
+  const shuffleArray = () => {
     const shuffledElements = [...allElements];
     for (let i = shuffledElements.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [shuffledElements[i], shuffledElements[j]] = [shuffledElements[j], shuffledElements[i]];
     }
     setAllElements(shuffledElements)
-    console.log('hello');
-    console.log('array:', allElements)
 
   };
-
-  // shuffleArray(allElements);
-  // console.log(allElements)
 
   return (
     <div className="App">
       <Button onClick={shuffleArray} variant="contained">Shuffle</Button>
       <div className="main">
         <div className="container three">
-          {allElements.slice(0, 3).map(element => <div><div>{element}</div></div>)}
+          {allElements.slice(0, 3).map(element => <div className={element}><div>{element}</div></div>)}
         </div>
         <div className="container four">
-          {allElements.slice(3, 7).map(element => <div><div>{element}</div></div>)}
+          {allElements.slice(3, 7).map(element => <div className={element}><div>{element}</div></div>)}
         </div>
         <div className="container">
-          {allElements.slice(7, 12).map(element => <div><div>{element}</div></div>)}
+          {allElements.slice(7, 12).map(element => <div className={element}><div>{element}</div></div>)}
         </div>
         <div className="container four">
-          {allElements.slice(12, 16).map(element => <div><div>{element}</div></div>)}
+          {allElements.slice(12, 16).map(element => <div className={element}><div>{element}</div></div>)}
         </div>
         <div className="container three">
-          {allElements.slice(16, 19).map(element => <div><div>{element}</div></div>)}
+          {allElements.slice(16, 19).map(element => <div className={element}><div>{element}</div></div>)}
         </div>
       </div>
     </div>
