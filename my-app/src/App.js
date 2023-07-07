@@ -1,7 +1,6 @@
 import Button from '@mui/material/Button';
 import React, { useState } from 'react';
 
-
 import './App.scss';
 
 
@@ -14,50 +13,63 @@ function App() {
   const clay = new Array(3).fill('clay');
   const allElementsInitial = [...wood, ...weat, ...sheep, ...stone, ...clay, 'desert'];
   // making the array for the numbers on each hexagon
-  let numbers = [2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12];
+  const numbersInitial = [2, 3, 3, 4, 4, 5, 5, 6, 6, 8, 8, 9, 9, 10, 10, 11, 11, 12, -1];
 
+  const [numbers, setNumbers] = useState(numbersInitial)
   const [allElements, setAllElements] = useState(allElementsInitial);
 
+  // shuffle the backgroundimages
   const shuffleBackground = () => {
     const shuffledElements = [...allElements];
     for (let i = shuffledElements.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [shuffledElements[i], shuffledElements[j]] = [shuffledElements[j], shuffledElements[i]];
     }
-    setAllElements(shuffledElements)
-
-    // making the array for the numbers
-
+    setAllElements(shuffledElements);
+    shuffleNumberArray(shuffledElements);
   };
 
-  const shuffleNumberArray = () => {
-    for (let i = numbers.length - 1; i > 0; i--) {
+  // shuffle the numbers
+  const shuffleNumberArray = (shuffledElements) => {
+    const shuffledNumbers = [...numbers]
+    for (let i = shuffledNumbers.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [numbers[i], numbers[j]] = [numbers[j], numbers[i]];
+      [shuffledNumbers[i], shuffledNumbers[j]] = [shuffledNumbers[j], shuffledNumbers[i]];
     }
-    return numbers;
+    const x = shuffledElements.findIndex(element => element ==='desert');
+    const y = shuffledNumbers.findIndex(element => element === -1);
+    // console.log(x, y)
+    [shuffledNumbers[x], shuffledNumbers[y]] = [shuffledNumbers[y], shuffledNumbers[x]];
+
+    setNumbers(shuffledNumbers);
   }
-  numbers = shuffleNumberArray();
-  console.log(numbers)
+
+  const getNumber = (idx) => {
+    numbers[idx] === -1 ? console.log('-1') : console.log('numbers[idx]', numbers[idx])
+    return numbers[idx] === -1 ? '-1' : numbers[idx]
+  }
+
 
   return (
     <div className="App">
       <Button onClick={shuffleBackground} variant="contained">Shuffle</Button>
       <div className="main">
-        <div className="container three">
-          {allElements.slice(0, 3).map((element, idx) => <div className={element}><div>{numbers[idx]}</div></div>)}
+        {/* backgroundimages-array is sliced and numbers-arrayindex is called for each row.
+        Background images and numbers from the respective arrays are implemented after shuffle*/}
+                <div className="container three">
+          {allElements.slice(0, 3).map((element, idx) => <div className={element}><div>{getNumber(idx)}</div></div>)}
         </div>
         <div className="container four">
-          {allElements.slice(3, 7).map((element, idx)=> <div className={element}><div>{numbers[idx+3]}</div></div>)}
+          {allElements.slice(3, 7).map((element, idx)=> <div className={element}><div>{getNumber(idx+3)}</div></div>)}
         </div>
         <div className="container">
-          {allElements.slice(7, 12).map((element, idx) => <div className={element}><div>{numbers[idx+7]}</div></div>)}
+          {allElements.slice(7, 12).map((element, idx) => <div className={element}><div>{getNumber(idx+7)}</div></div>)}
         </div>
         <div className="container four">
-          {allElements.slice(12, 16).map((element, idx) => <div className={element}><div>{numbers[idx+12]}</div></div>)}
+          {allElements.slice(12, 16).map((element, idx) => <div className={element}><div>{getNumber(idx+12)}</div></div>)}
         </div>
         <div className="container three">
-          {allElements.slice(16, 19).map((element, idx) => <div className={element}><div>{numbers[idx+16]}</div></div>)}
+          {allElements.slice(16, 19).map((element, idx) => <div className={element}><div>{getNumber(idx+16)}</div></div>)}
         </div>
       </div>
     </div>
@@ -65,3 +77,4 @@ function App() {
 }
 
 export default App;
+// {createLine(7, 12, 7)}
