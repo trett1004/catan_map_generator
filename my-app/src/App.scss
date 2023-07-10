@@ -1,4 +1,4 @@
-.main {
+.hexagonField {
     display:grid;
     // flex-direction: column;
     // flex-wrap: nowrap;
@@ -9,6 +9,30 @@
     margin-left: 100px;
   }
   
+  .singleHexagon {
+    font-size: 0; /*disable white space between inline block element */
+  }
+
+  .singleHexagon > div {
+    width: var(--s);
+    margin: var(--m);
+    height: calc(var(--s)*1.1547);
+    display:inline-flex;
+    font-size:30px;
+    font-weight: bold;
+    color: antiquewhite;
+    clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
+    // background: burlywood;
+    margin-bottom: calc(var(--m) - var(--s)*0.2885);
+    align-items: center;
+    justify-content: center;
+}
+
+.hexagonBG {
+    display: flex;
+}
+
+
   .wood {
     background-image: url("http://localhost:3000/images/wood.jpg");
   }
@@ -33,9 +57,6 @@
     background-image: url("http://localhost:3000/images/desert.jpg");
   }
 
-  .container {
-    font-size: 0; /*disable white space between inline block element */
-  }
   
   .three {
     margin-left: 102px;
@@ -45,17 +66,6 @@
     margin-left: 51px;
   }
   
-  .container > div {
-    width: var(--s);
-    margin: var(--m);
-    height: calc(var(--s)*1.1547);
-    display:inline-flex;
-    font-size:initial;
-    clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
-    // background: burlywood;
-    margin-bottom: calc(var(--m) - var(--s)*0.2885);
-    align-items: center;
-  }
 
   .hidden {
     display: none;

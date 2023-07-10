@@ -36,7 +36,7 @@ function App() {
       const j = Math.floor(Math.random() * (i + 1));
       [shuffledNumbers[i], shuffledNumbers[j]] = [shuffledNumbers[j], shuffledNumbers[i]];
     }
-    const x = shuffledElements.findIndex(element => element ==='desert');
+    const x = shuffledElements.findIndex(element => element === 'desert');
     const y = shuffledNumbers.findIndex(element => element === -1);
     // console.log(x, y)
     [shuffledNumbers[x], shuffledNumbers[y]] = [shuffledNumbers[y], shuffledNumbers[x]];
@@ -53,23 +53,23 @@ function App() {
   return (
     <div className="App">
       <Button onClick={shuffleBackground} variant="contained">Shuffle</Button>
-      <div className="main">
+      <div className="hexagonField">
         {/* backgroundimages-array is sliced and numbers-arrayindex is called for each row.
         Background images and numbers from the respective arrays are implemented after shuffle*/}
-                <div className="container three">
-          {allElements.slice(0, 3).map((element, idx) => <div className={element}><div>{getNumber(idx)}</div></div>)}
+        <div className="singleHexagon three">
+          {allElements.slice(0, 3).map((element, idx) => <div className={element}><div clasName="hexagonBG">{getNumber(idx)}</div></div>)}
         </div>
-        <div className="container four">
-          {allElements.slice(3, 7).map((element, idx)=> <div className={element}><div>{getNumber(idx+3)}</div></div>)}
+        <div className="singleHexagon four">
+          {allElements.slice(3, 7).map((element, idx) => <div className={element}><div clasName="hexagonBG">{getNumber(idx + 3)}</div></div>)}
         </div>
-        <div className="container">
-          {allElements.slice(7, 12).map((element, idx) => <div className={element}><div>{getNumber(idx+7)}</div></div>)}
+        <div className="singleHexagon">
+          {allElements.slice(7, 12).map((element, idx) => <div className={element}><div clasName="hexagonBG">{getNumber(idx + 7)}</div></div>)}
         </div>
-        <div className="container four">
-          {allElements.slice(12, 16).map((element, idx) => <div className={element}><div>{getNumber(idx+12)}</div></div>)}
+        <div className="singleHexagon four">
+          {allElements.slice(12, 16).map((element, idx) => <div className={element}><div clasName="hexagonBG">{getNumber(idx + 12)}</div></div>)}
         </div>
-        <div className="container three">
-          {allElements.slice(16, 19).map((element, idx) => <div className={element}><div>{getNumber(idx+16)}</div></div>)}
+        <div className="singleHexagon three">
+          {allElements.slice(16, 19).map((element, idx) => <div className={element}><div clasName="hexagonBG">{getNumber(idx + 16)}</div></div>)}
         </div>
       </div>
     </div>
