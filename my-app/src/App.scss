@@ -43,10 +43,13 @@
 
   .sheep {
     background-image: url("http://localhost:3000/images/sheep.jpg");
+    opacity: 0.9;
   }
 
   .weat {
     background-image: url("http://localhost:3000/images/weat.jpg");
+    opacity: 0.8;
+    background-blend-mode: lighten;
   }
 
   .stone {
