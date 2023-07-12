@@ -15,12 +15,34 @@ const port = 3300;
 server.use(express.static('public'));
 server.use(express.json());
 
-// api test
+// handle get request (table of best maps)
 server.get("/api", (req, res) => {
-  res.json({ message: "API TEST:Hello from server!" });
+  myDB.list({
+    include_docs: true
+  }).then(
+    dbRes => {
+      const myArray = dbRes.rows.map(val => val.doc);
+      console.log('myarray', myArray);
+      res.json({ array: myArray, message: "API TEST:Hello from server!" });
+    }
+  ).catch(
+    console.warn
+  )
+
 });
 
-// handle post request
+// // get data from db
+// myDB.list({
+//   include_docs: true
+// }).then(
+//   res => res.rows.map(val => val.doc)
+// ).then(
+//   res => console.log(res)
+// ).catch(
+//   console.warn
+// )
+
+// handle post request (rating)
 server.post('/rate', function requestHandler(req, res) {
   const data = req.body;
   console.log('res', req.body)
@@ -33,6 +55,9 @@ server.post('/rate', function requestHandler(req, res) {
     console.warn
   )
 });
+
+
+
 
 
 

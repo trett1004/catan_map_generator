@@ -1,6 +1,7 @@
 'use strict';
 // project external imports
 import React, { useState, useEffect } from 'react';
+import Container from '@mui/material/Container';
 
 // project internal imports
 import { shuffleBackground, allElementsInitial, shuffleNumberArray, numbersInitial } from './helpers/create_board.js';
@@ -9,6 +10,7 @@ import HexagonRow from './components/HexagonRow/HexagonRow.js';
 import GreenAlert from './components/Alert/Alert.js';
 import ButtonRating from './components/button_rate/button_rate.js'
 import Box from './components/Rating/rating.js'
+import DenseTable from './components/Table/table_of_ratings.js'
 
 import './App.scss';
 
@@ -19,10 +21,10 @@ function App() {
   const [data, setData] = React.useState(null);
 
   // API check
-  React.useEffect(() => {
+  useEffect(() => {
     fetch("/api")
       .then((res) => res.json())
-      .then((data) => setData(data.message));
+      .then((data) => setData(JSON.stringify(data.array[0]['rating'])));
   }, []);
 
   // get the response from the server and display it
@@ -38,7 +40,7 @@ function App() {
 
   return (
     <div className="App">
-      <Box allElements={allElements} numbers={numbers} />
+      <Container>
       <Btn onClick={handleShuffleClick} variant="contained" content="SHUFFLE" className="Btn"/>
       <div className="hexagonField">
         {/* backgroundimages-array is sliced and numbers-arrayindex is called for each row.
@@ -53,7 +55,12 @@ function App() {
       </div>
       <br></br>
       <br></br>
+      <Box allElements={allElements} numbers={numbers} />
+      <br></br>
+      <h4>Top rated maps</h4>
+      <DenseTable />
       <p>{!data ? "Loading..." : data}</p>
+      </Container>
     </div>
   );
 
