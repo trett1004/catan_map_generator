@@ -1,14 +1,16 @@
 'use strict';
+// project external imports
 import React, { useState, useEffect } from 'react';
-import { shuffleBackground, allElementsInitial, shuffleNumberArray, numbersInitial } from './helpers/create_board.js';
 
+// project internal imports
+import { shuffleBackground, allElementsInitial, shuffleNumberArray, numbersInitial } from './helpers/create_board.js';
 import Btn from './components/Btn/Btn.js';
 import HexagonRow from './components/HexagonRow/HexagonRow.js';
 import GreenAlert from './components/Alert/Alert.js';
+import ButtonRating from './components/button_rate/button_rate.js'
+import Box from './components/Rating/rating.js'
 
 import './App.scss';
-
-
 
 function App() {
   // Hooks
@@ -62,6 +64,8 @@ function App() {
 
   return (
     <div className="App">
+      <Box />
+      <ButtonRating />
       <Btn onClick={handleRateClick} content="RATE" />
       <div>{alert ? <GreenAlert content="Rating received" severity="success" /> : <></>}</div>
 
