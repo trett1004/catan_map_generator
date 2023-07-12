@@ -8,6 +8,8 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import {} from '@mui/icons-material';
 
+import Box from '../Rating/rating.js'
+
 export default function ButtonRating() {
   const [open, setOpen] = React.useState(false);
 
@@ -21,29 +23,29 @@ export default function ButtonRating() {
 
   return (
     <div>
+
       <Button variant="outlined" onClick={handleClickOpen}>
         Open form dialog
       </Button>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Subscribe</DialogTitle>
+        <DialogTitle>How was the game?</DialogTitle>
         <DialogContent>
-          <DialogContentText>
-            To subscribe to this website, please enter your email address here. We
-            will send updates occasionally.
+        <Box />
+          {/* <DialogContentText>
+            Add a comment if you like.
           </DialogContentText>
           <TextField
             autoFocus
             margin="dense"
             id="name"
-            label="Email Address"
+            label="Comment"
             type="email"
             fullWidth
             variant="standard"
-          />
+          /> */}
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Subscribe</Button>
+          <Button onClick={handleClose}>Rate</Button>
         </DialogActions>
       </Dialog>
     </div>
