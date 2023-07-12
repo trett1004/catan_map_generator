@@ -16,7 +16,6 @@ function App() {
   // Hooks
   const [allElements, setAllElements] = useState(allElementsInitial);
   const [numbers, setNumbers] = useState(numbersInitial)
-  const [alert, setAlert] = useState(false);
   const [data, setData] = React.useState(null);
 
   // API check
@@ -25,31 +24,6 @@ function App() {
       .then((res) => res.json())
       .then((data) => setData(data.message));
   }, []);
-
-
-  // Save board to db
-  const handleRateClick = () => {
-    fetch('/rate', {
-      method: 'POST',
-      body: JSON.stringify({
-        fieldArray: allElements,
-        numberArray: numbers,
-        id: -1,
-        rating: -1,
-        voteCount: -1
-      }),
-      headers: {
-        'Content-type': 'application/json',
-      },
-    })
-      .then((data) => {
-        setAlert(true);
-        window.setTimeout(() => setAlert(false), 2000)
-        console.log('data', data.body)
-        console.log('alert Status', alert)
-      })
-      .catch((err) => console.log(err.message));
-  }
 
   // get the response from the server and display it
 
@@ -64,12 +38,8 @@ function App() {
 
   return (
     <div className="App">
-      <Box />
-      <ButtonRating />
-      <Btn onClick={handleRateClick} content="RATE" />
-      <div>{alert ? <GreenAlert content="Rating received" severity="success" /> : <></>}</div>
-
-      <Btn onClick={handleShuffleClick} variant="contained" content="SHUFFLE" />
+      <Box allElements={allElements} numbers={numbers} />
+      <Btn onClick={handleShuffleClick} variant="contained" content="SHUFFLE" className="Btn"/>
       <div className="hexagonField">
         {/* backgroundimages-array is sliced and numbers-arrayindex is called for each row.
         Background images and numbers from the respective arrays are implemented after shuffle*/}
