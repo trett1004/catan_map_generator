@@ -1,4 +1,6 @@
 'use strict';
+var dockerNames = require('docker-names');
+
 // creating the array with the background images for the hexagons
 const wood = new Array(4).fill('wood');
 const weat = new Array(4).fill('weat');
@@ -36,5 +38,10 @@ const shuffleNumberArray = ({numbers, shuffledElements}) => {
     return shuffledNumbers;
 }
 
+const getRandomName = () => {
+    const randomName = dockerNames.getRandomName()
+    return randomName
+}
 
-export { shuffleBackground, allElementsInitial, shuffleNumberArray, numbersInitial }
+
+export { shuffleBackground, allElementsInitial, shuffleNumberArray, numbersInitial, getRandomName }

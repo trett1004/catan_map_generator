@@ -2,15 +2,16 @@
 // project external imports
 import React, { useState, useEffect } from 'react';
 import Container from '@mui/material/Container';
+import Box from './components/Rating/rating.js'
+import DenseTable from './components/Table/table_of_ratings.js'
 
 // project internal imports
-import { shuffleBackground, allElementsInitial, shuffleNumberArray, numbersInitial } from './helpers/create_board.js';
+import { shuffleBackground, allElementsInitial, shuffleNumberArray, numbersInitial, getRandomName } from './helpers/create_board.js';
 import Btn from './components/Btn/Btn.js';
 import HexagonRow from './components/HexagonRow/HexagonRow.js';
 import GreenAlert from './components/Alert/Alert.js';
 import ButtonRating from './components/button_rate/button_rate.js'
-import Box from './components/Rating/rating.js'
-import DenseTable from './components/Table/table_of_ratings.js'
+
 
 import './App.scss';
 
@@ -18,7 +19,10 @@ function App() {
   // Hooks
   const [allElements, setAllElements] = useState(allElementsInitial);
   const [numbers, setNumbers] = useState(numbersInitial)
+  const [name, setName] = useState(getRandomName())
   const [data, setData] = React.useState(null);
+
+  console.log('name', name)
 
   // API check
   useEffect(() => {
@@ -36,12 +40,18 @@ function App() {
 
       const shuffledNumbers = shuffleNumberArray({ numbers, shuffledElements });
       setNumbers(shuffledNumbers);
+
+      const name = getRandomName();
+      setName(name);
+      console.log('getname', name)
   }
 
   return (
     <div className="App">
       <Container>
       <Btn onClick={handleShuffleClick} variant="contained" content="SHUFFLE" className="Btn"/>
+      <h1 style={{ textAlign: 'center' }}>Mapname: {name}</h1>
+
       <div className="hexagonField">
         {/* backgroundimages-array is sliced and numbers-arrayindex is called for each row.
         Background images and numbers from the respective arrays are implemented after shuffle*/}
