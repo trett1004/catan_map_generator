@@ -39,7 +39,7 @@ const handleRateClick = (allElements, numbers, setAlert, value, mapName) => {
       body: JSON.stringify({
         fieldArray: allElements,
         numberArray: numbers,
-        rating: value,
+        rating: [value],
         voteCount: 1,
         mapName: mapName
       }),

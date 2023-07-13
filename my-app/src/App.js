@@ -47,9 +47,10 @@ function App() {
     <div className="App">
       <Container>
       <Btn onClick={handleShuffleClick} variant="contained" content="SHUFFLE" className="Btn"/>
-      <h1 style={{ textAlign: 'center' }}>Mapname: {mapName}</h1>
+
 
       <div className="hexagonField">
+      <h1 style={{ textAlign: 'center' }}>Map: {mapName}</h1>
         {/* backgroundimages-array is sliced and numbers-arrayindex is called for each row.
         Background images and numbers from the respective arrays are implemented after shuffle*/}
 
@@ -65,8 +66,8 @@ function App() {
       <BasicRating allElements={allElements} numbers={numbers} mapName={mapName}/>
       <br></br>
       <h4>Top rated maps</h4>
-      <DenseTable />
-      <p>{!data ? "Loading..." : data}</p>
+      <DenseTable setAllElements={setAllElements} setNumbers={setNumbers} setName={setName} />
+      {/* <p>{!data ? "Loading..." : data}</p> */}
       </Container>
     </div>
   );
