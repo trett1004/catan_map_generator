@@ -8,7 +8,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import {} from '@mui/icons-material';
 
-import Box from '../Rating/rating.js'
+import {BasicRating} from '../Rating/rating.js'
 
 export default function ButtonRating() {
   const [open, setOpen] = React.useState(false);
@@ -30,7 +30,7 @@ export default function ButtonRating() {
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>How was the game?</DialogTitle>
         <DialogContent>
-        <Box />
+        <BasicRating />
           {/* <DialogContentText>
             Add a comment if you like.
           </DialogContentText>

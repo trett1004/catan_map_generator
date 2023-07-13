@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import Btn from '../Btn/Btn.js';
 import GreenAlert from '../Alert/Alert.js';
 
-export default function BasicRating({allElements, numbers}) {
+export function BasicRating({allElements, numbers, mapName}) {
   const [value, setValue] = React.useState(2.5);
   const [alert, setAlert] = React.useState(false);
 
@@ -25,14 +25,14 @@ export default function BasicRating({allElements, numbers}) {
           setValue(newValue);
         }}
       />
-      <Btn onClick={() => handleRateClick(allElements, numbers, setAlert, value)} content="RATE" />
+      <Btn onClick={() => handleRateClick(allElements, numbers, setAlert, value, mapName)} content="RATE" />
       <div>{alert ? <GreenAlert content="Rating received" severity="success" /> : <></>}</div>
     </Box>
   );
 }
 
 // Save board to db
-const handleRateClick = (allElements, numbers, setAlert, value) => {
+const handleRateClick = (allElements, numbers, setAlert, value, mapName) => {
     console.log('value', value)
     fetch('/rate', {
       method: 'POST',
@@ -40,7 +40,8 @@ const handleRateClick = (allElements, numbers, setAlert, value) => {
         fieldArray: allElements,
         numberArray: numbers,
         rating: value,
-        voteCount: 1
+        voteCount: 1,
+        mapName: mapName
       }),
       headers: {
         'Content-type': 'application/json',

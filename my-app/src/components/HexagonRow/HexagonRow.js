@@ -4,7 +4,7 @@ const getClass = (idx, idxAdder, numbers) => {
     return numbers[idx+idxAdder] === -1 ? "hexagonBg hidden" : "hexagonBg";
 }
 
-const Hexagon = ({ allElements, numbers, className, idxAdder, arrayStart, arrayEnd,...props }) => {
+export const Hexagon = ({ allElements, numbers, className, idxAdder, arrayStart, arrayEnd,...props }) => {
     return (
         <div className={className}>
             {allElements.slice(arrayStart, arrayEnd).map((element, idx) => (
@@ -15,8 +15,6 @@ const Hexagon = ({ allElements, numbers, className, idxAdder, arrayStart, arrayE
         </div>
     );
 }
-
-export default Hexagon;
 
 // Old code from App.js before refactoring
 {/* <div className="singleHexagon four">

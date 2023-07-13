@@ -2,13 +2,13 @@
 // project external imports
 import React, { useState, useEffect } from 'react';
 import Container from '@mui/material/Container';
-import Box from './components/Rating/rating.js'
+import { BasicRating } from './components/Rating/rating.js'
 import DenseTable from './components/Table/table_of_ratings.js'
 
 // project internal imports
 import { shuffleBackground, allElementsInitial, shuffleNumberArray, numbersInitial, getRandomName } from './helpers/create_board.js';
 import Btn from './components/Btn/Btn.js';
-import HexagonRow from './components/HexagonRow/HexagonRow.js';
+import {Hexagon as HexagonRow} from './components/HexagonRow/HexagonRow.js';
 import GreenAlert from './components/Alert/Alert.js';
 import ButtonRating from './components/button_rate/button_rate.js'
 
@@ -19,10 +19,8 @@ function App() {
   // Hooks
   const [allElements, setAllElements] = useState(allElementsInitial);
   const [numbers, setNumbers] = useState(numbersInitial)
-  const [name, setName] = useState(getRandomName())
+  const [mapName, setName] = useState(getRandomName())
   const [data, setData] = React.useState(null);
-
-  console.log('name', name)
 
   // API check
   useEffect(() => {
@@ -41,16 +39,15 @@ function App() {
       const shuffledNumbers = shuffleNumberArray({ numbers, shuffledElements });
       setNumbers(shuffledNumbers);
 
-      const name = getRandomName();
-      setName(name);
-      console.log('getname', name)
+      const mapName = getRandomName();
+      setName(mapName);
   }
 
   return (
     <div className="App">
       <Container>
       <Btn onClick={handleShuffleClick} variant="contained" content="SHUFFLE" className="Btn"/>
-      <h1 style={{ textAlign: 'center' }}>Mapname: {name}</h1>
+      <h1 style={{ textAlign: 'center' }}>Mapname: {mapName}</h1>
 
       <div className="hexagonField">
         {/* backgroundimages-array is sliced and numbers-arrayindex is called for each row.
@@ -65,7 +62,7 @@ function App() {
       </div>
       <br></br>
       <br></br>
-      <Box allElements={allElements} numbers={numbers} />
+      <BasicRating allElements={allElements} numbers={numbers} mapName={mapName}/>
       <br></br>
       <h4>Top rated maps</h4>
       <DenseTable />

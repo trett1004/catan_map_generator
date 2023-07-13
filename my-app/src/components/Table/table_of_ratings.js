@@ -9,8 +9,10 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Rating from '@mui/material/Rating';
 
-function createData(rating, votes, fields) {
-    return { rating, votes, fields };
+import Btn from '../Btn/Btn.js'
+
+function createData(rating, votes, mapName) {
+    return { rating, votes, mapName };
 }
 
 export default function DenseTable() {
@@ -28,7 +30,7 @@ export default function DenseTable() {
     console.log('jsnData', jsnData)
     if (data) {
       tableData = jsnData.map((element) => {
-        return createData(element['rating'], element['voteCount'], element['fieldArray']);
+        return createData(element['rating'], element['voteCount'], element['mapName']);
       });
     }
     console.log('tableData', tableData)
@@ -38,12 +40,12 @@ export default function DenseTable() {
             <Table sx={{ minWidth: 300 }} size="small" aria-label="a dense table">
                 <TableHead>
                     <TableRow>
-                        <TableCell>rating</TableCell>
-                        <TableCell align="left">votes</TableCell>
-                        <TableCell align="left">fields</TableCell>
-            {/* // <TableCell align="right">numbers</TableCell>
-            // <TableCell align="right">rating</TableCell>
-            // <TableCell align="right">votes</TableCell> */}
+                        <TableCell>Rating</TableCell>
+                        <TableCell align="left">Votes</TableCell>
+                        <TableCell align="left">Map Name</TableCell>
+                        <TableCell align="left"></TableCell>
+                        {/* <TableCell align="right">rating</TableCell> */}
+                        {/* <TableCell align="right">votes</TableCell> */}
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -56,10 +58,10 @@ export default function DenseTable() {
                             <Rating name="read-only" value={row.rating} precision={0.5} readOnly />
                             </TableCell>
                             <TableCell align="left">{row.votes}</TableCell>
-                            <TableCell align="left">{row.fields}</TableCell>
-                            {/* <TableCell align="right">{row.numbers}</TableCell>
-              <TableCell align="right">{row.rating}</TableCell>
-              <TableCell align="right">{row.votes}</TableCell> */}
+                            <TableCell align="left">{row.mapName}</TableCell>
+                            <TableCell align="left"><Btn content={"Play"}/></TableCell>
+                            {/* <TableCell align="right">{row.rating}</TableCell>
+                            <TableCell align="right">{row.votes}</TableCell> */}
                         </TableRow>
                     ))}
                 </TableBody>
