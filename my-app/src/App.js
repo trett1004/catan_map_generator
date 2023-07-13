@@ -20,14 +20,16 @@ function App() {
   const [allElements, setAllElements] = useState(allElementsInitial);
   const [numbers, setNumbers] = useState(numbersInitial)
   const [mapName, setName] = useState(getRandomName())
-  const [data, setData] = React.useState(null);
+  // const [data, setData] = React.useState(null);
+  const [dbData, setData] = React.useState(null);
 
-  // API check
+  // GET Request
   useEffect(() => {
-    fetch("/api")
-      .then((res) => res.json())
-      .then((data) => setData(JSON.stringify(data.array[0]['rating'])));
+      fetch("/api")
+          .then((res) => res.json())
+          .then((dbData) => setData(dbData.array));
   }, []);
+  console.log('data', dbData)
 
   // get the response from the server and display it
 
@@ -63,10 +65,10 @@ function App() {
       </div>
       <br></br>
       <br></br>
-      <BasicRating allElements={allElements} numbers={numbers} mapName={mapName}/>
+      <BasicRating allElements={allElements} numbers={numbers} mapName={mapName} dbData={dbData} setData={setData}/>
       <br></br>
       <h4>Top rated maps</h4>
-      <DenseTable setAllElements={setAllElements} setNumbers={setNumbers} setName={setName} />
+      <DenseTable setAllElements={setAllElements} setNumbers={setNumbers} setName={setName} dbData={dbData} setData={setData}/>
       {/* <p>{!data ? "Loading..." : data}</p> */}
       </Container>
     </div>

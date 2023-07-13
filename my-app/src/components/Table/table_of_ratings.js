@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -15,15 +14,8 @@ function createData(rating, votes, mapName) {
     return { rating, votes, mapName };
 }
 
-export default function DenseTable({ setAllElements, setNumbers, setName }) {
-    const [dbData, setData] = React.useState(null);
-    // Get data from database
-    useEffect(() => {
-        fetch("/api")
-            .then((res) => res.json())
-            .then((dbData) => setData(dbData.array));
-    }, []);
-    console.log('data', dbData)
+export default function DenseTable({ setAllElements, setNumbers, setName, dbData }) {
+
 
     // prepare data for table
     let tableData = [];
@@ -60,7 +52,6 @@ export default function DenseTable({ setAllElements, setNumbers, setName }) {
                             setNumbers(currentTableRowData['numberArray']);
                             setName(currentTableRowData['mapName']);
                         };
-                        console.log('row.rating', row.rating)
                         return (
                             <TableRow
                                 key={row.rating}
