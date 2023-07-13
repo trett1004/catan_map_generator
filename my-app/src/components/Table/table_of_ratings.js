@@ -7,9 +7,10 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import Rating from '@mui/material/Rating';
 
-function createData(rating, votes) {
-    return { rating, votes };
+function createData(rating, votes, fields) {
+    return { rating, votes, fields };
 }
 
 export default function DenseTable() {
@@ -27,7 +28,7 @@ export default function DenseTable() {
     console.log('jsnData', jsnData)
     if (data) {
       tableData = jsnData.map((element) => {
-        return createData(element['rating'], element['voteCount']);
+        return createData(element['rating'], element['voteCount'], element['fieldArray']);
       });
     }
     console.log('tableData', tableData)
@@ -39,10 +40,10 @@ export default function DenseTable() {
                     <TableRow>
                         <TableCell>rating</TableCell>
                         <TableCell align="left">votes</TableCell>
-                        {/* <TableCell align="right">fields</TableCell>
-            <TableCell align="right">numbers</TableCell>
-            <TableCell align="right">rating</TableCell>
-            <TableCell align="right">votes</TableCell> */}
+                        <TableCell align="left">fields</TableCell>
+            {/* // <TableCell align="right">numbers</TableCell>
+            // <TableCell align="right">rating</TableCell>
+            // <TableCell align="right">votes</TableCell> */}
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -52,10 +53,10 @@ export default function DenseTable() {
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
                             <TableCell component="th" scope="row">
-                                {row.rating}
+                            <Rating name="read-only" value={row.rating} precision={0.5} readOnly />
                             </TableCell>
                             <TableCell align="left">{row.votes}</TableCell>
-                            {/* <TableCell align="right">{row.fields}</TableCell> */}
+                            <TableCell align="left">{row.fields}</TableCell>
                             {/* <TableCell align="right">{row.numbers}</TableCell>
               <TableCell align="right">{row.rating}</TableCell>
               <TableCell align="right">{row.votes}</TableCell> */}
