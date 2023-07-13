@@ -15,7 +15,7 @@ function createData(rating, votes, mapName) {
     return { rating, votes, mapName };
 }
 
-export default function DenseTable() {
+export default function DenseTable({ setAllElements, setNumbers, setName }) {
     const [data, setData] = React.useState(null);
     // API check
     useEffect(() => {
@@ -25,13 +25,19 @@ export default function DenseTable() {
 
     }, []);
 
+    // prepare data for table
     let tableData = [];
     let jsnData = JSON.parse(data)
     console.log('jsnData', jsnData)
     if (data) {
-      tableData = jsnData.map((element) => {
-        return createData(element['rating'], element['voteCount'], element['mapName']);
-      });
+        tableData = jsnData.map((element) => {
+            // rating is an array. compute average of array
+            const ratingArr = element['rating']
+            const sumOfRatings = ratingArr.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+            const averageRating =  sumOfRatings / ratingArr.length
+            // return average Rating, number of votes and the name of the map
+            return createData(averageRating, ratingArr.length, element['mapName']);
+        });
     }
     console.log('tableData', tableData)
 
@@ -40,30 +46,35 @@ export default function DenseTable() {
             <Table sx={{ minWidth: 300 }} size="small" aria-label="a dense table">
                 <TableHead>
                     <TableRow>
-                        <TableCell>Rating</TableCell>
-                        <TableCell align="left">Votes</TableCell>
                         <TableCell align="left">Map Name</TableCell>
+                        <TableCell align="left">Votes</TableCell>
+                        <TableCell>Average Rating</TableCell>
                         <TableCell align="left"></TableCell>
-                        {/* <TableCell align="right">rating</TableCell> */}
-                        {/* <TableCell align="right">votes</TableCell> */}
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {tableData.map((row) => (
-                        <TableRow
-                            key={row.rating}
-                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                        >
-                            <TableCell component="th" scope="row">
-                            <Rating name="read-only" value={row.rating} precision={0.5} readOnly />
-                            </TableCell>
-                            <TableCell align="left">{row.votes}</TableCell>
-                            <TableCell align="left">{row.mapName}</TableCell>
-                            <TableCell align="left"><Btn content={"Play"}/></TableCell>
-                            {/* <TableCell align="right">{row.rating}</TableCell>
-                            <TableCell align="right">{row.votes}</TableCell> */}
-                        </TableRow>
-                    ))}
+                    {tableData.map((row) => {
+                        const currentTableRowData = jsnData.find(element => element.mapName === row.mapName)
+                        const loadMap = () => {
+                            setAllElements(currentTableRowData['fieldArray']);
+                            setNumbers(currentTableRowData['numberArray']);
+                            setName(currentTableRowData['mapName']);
+                        };
+                        console.log('row.rating', row.rating)
+                        return (
+                            <TableRow
+                                key={row.rating}
+                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                            >
+                                <TableCell align="left">{row.mapName}</TableCell>
+                                <TableCell align="left">{row.votes}</TableCell>
+                                <TableCell component="th" scope="row">
+                                    <Rating name="read-only" value={row.rating} precision={0.5} readOnly />
+                                </TableCell>
+                                <TableCell align="left"><Btn onClick={loadMap} content={"Load Map"} /></TableCell>
+                            </TableRow>
+                        )
+                    })}
                 </TableBody>
             </Table>
         </TableContainer>
