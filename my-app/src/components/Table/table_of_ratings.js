@@ -16,22 +16,20 @@ function createData(rating, votes, mapName) {
 }
 
 export default function DenseTable({ setAllElements, setNumbers, setName }) {
-    const [data, setData] = React.useState(null);
-    // API check
+    const [dbData, setData] = React.useState(null);
+    // Get data from database
     useEffect(() => {
         fetch("/api")
             .then((res) => res.json())
-            .then((data) => setData(JSON.stringify(data.array)));
-
+            .then((dbData) => setData(dbData.array));
     }, []);
+    console.log('data', dbData)
 
     // prepare data for table
     let tableData = [];
-    let jsnData = JSON.parse(data)
-    console.log('jsnData', jsnData)
-    if (data) {
-        tableData = jsnData.map((element) => {
-            // rating is an array. compute average of array
+    if (dbData) {
+        tableData = dbData.map((element) => {
+            // rating is an array, so compute average of array
             const ratingArr = element['rating']
             const sumOfRatings = ratingArr.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
             const averageRating =  sumOfRatings / ratingArr.length
@@ -39,8 +37,6 @@ export default function DenseTable({ setAllElements, setNumbers, setName }) {
             return createData(averageRating, ratingArr.length, element['mapName']);
         });
     }
-    console.log('tableData', tableData)
-
     return (
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 300 }} size="small" aria-label="a dense table">
@@ -53,8 +49,12 @@ export default function DenseTable({ setAllElements, setNumbers, setName }) {
                     </TableRow>
                 </TableHead>
                 <TableBody>
+
                     {tableData.map((row) => {
-                        const currentTableRowData = jsnData.find(element => element.mapName === row.mapName)
+                        // iterate the db entries to find the respective map
+                        // find if there are matching map names
+                        const currentTableRowData = dbData.find(element => element.mapName === row.mapName)
+                        // change the states so the map is desplayed in the hexagonfields
                         const loadMap = () => {
                             setAllElements(currentTableRowData['fieldArray']);
                             setNumbers(currentTableRowData['numberArray']);
