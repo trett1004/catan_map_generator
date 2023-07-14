@@ -9,9 +9,6 @@ import DenseTable from './components/Table/table_of_ratings.js'
 import { shuffleBackground, allElementsInitial, shuffleNumberArray, numbersInitial, getRandomName } from './helpers/create_board.js';
 import Btn from './components/Btn/Btn.js';
 import {Hexagon as HexagonRow} from './components/HexagonRow/HexagonRow.js';
-import GreenAlert from './components/Alert/Alert.js';
-import ButtonRating from './components/button_rate/button_rate.js'
-
 
 import './App.scss';
 
@@ -29,7 +26,6 @@ function App() {
           .then((res) => res.json())
           .then((dbData) => setData(dbData.array));
   }, []);
-  console.log('data', dbData)
 
   // get the response from the server and display it
 

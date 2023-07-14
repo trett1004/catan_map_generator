@@ -22,7 +22,7 @@ server.get("/api", (req, res) => {
   }).then(
     dbRes => {
       const myArray = dbRes.rows.map(val => val.doc);
-      // console.log('myarray', myArray);
+      console.log('myarray', myArray);
       res.json({ array: myArray, message: "API TEST:Hello from server!" });
     }
   ).catch(
@@ -34,35 +34,49 @@ server.get("/api", (req, res) => {
 // handle post request for rating a new map
 server.post('/rate_new_map', function requestHandler(req, res) {
   const data = req.body;
-  res.end('Rating was added');
 
   // save to couchDB
-  myDB.insert(req.body).then(
-    console.log
-  ).catch(
-    console.warn
+  return myDB.insert(req.body).then(() => {
+    myDB.list({
+      include_docs: true
+    }).then(
+      dbRes => {
+        const myArray = dbRes.rows.map(val => val.doc);
+        console.log('myarray', myArray);
+        res.json({ array: myArray, message: "API TEST:Hello from server!" });
+      }
+    ).catch(
+      console.warn
+    )
+  }
   )
 });
 
 // handle post request for rating an existing map
 server.post('/rate_existing_map', function requestHandler(req, res) {
   const newRating = req.body['rating'];
-  res.end('Rating was added');
 
   // save to couchDB
   const id = req.body['id']
-  myDB.get(id)
+  return myDB.get(id)
     .then(doc => {
       doc['rating'].push(newRating)
       return myDB.insert(doc)
     })
-    .then(response => {
-      console.log('Document updated:', response);
+    .then(() => {
+      return myDB.list({
+        include_docs: true
+      })
     })
-    .catch(err => console.error(err));
+    .then(
+      dbRes => {
+        const myArray = dbRes.rows.map(val => val.doc);
+        console.log('myarray', myArray);
+        res.json({ array: myArray, message: "API TEST:Hello from server!" });
+      }
+    )
+  .catch(err => console.error(err));
 });
-
-
 
 // 80 ist der Standard-Port für HTTP
 server.listen(port, err => console.log(err || `Server listening on port ${3300}`));
