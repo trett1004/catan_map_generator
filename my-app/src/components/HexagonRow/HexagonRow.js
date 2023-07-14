@@ -8,7 +8,7 @@ export const Hexagon = ({ allElements, numbers, className, idxAdder, arrayStart,
     return (
         <div className={className}>
             {allElements.slice(arrayStart, arrayEnd).map((element, idx) => (
-                <div className={element}>
+                <div key={idx} className={element}>
                     <div className={getClass(idx, idxAdder, numbers)}>{numbers[idx + idxAdder]}</div>
                 </div>
             ))}
