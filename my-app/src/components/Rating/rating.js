@@ -74,9 +74,9 @@ const handleRateClick = (allElements, numbers, setAlert, value, mapName, dbData,
     setData(dbData.array);
     console.log(dbData.array)
   })
-  .catch ((err) => console.log(err.message))
   .then((_) => {
     setAlert(true);
     window.setTimeout(() => setAlert(false), 2000)
   })
+  .catch ((err) => console.log(err.message))
 }
