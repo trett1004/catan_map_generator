@@ -6,12 +6,12 @@
     --m: 1px;    /* margin */
     --f: calc(1.732 * var(--s) + 4 * var(--m)  - 1px);
     white-space: nowrap;
-    margin-left: 100px;
+    // margin-left: 100px;
   }
   
-  .singleHexagon {
-    font-size: 0; /*disable white space between inline block element */
-  }
+  // .singleHexagon {
+  //   // font-size: 0; /*disable white space between inline block element */
+  // }
 
   .singleHexagon > div {
     width: var(--s);
@@ -60,6 +60,10 @@
     background-image: url("http://localhost:3000/images/desert.jpg");
   }
 
+  .water {
+    background-image: url("http://localhost:3000/images/water.jpg");
+  }
+
   
   .three {
     margin-left: 102px;
@@ -68,10 +72,19 @@
   .four {
     margin-left: 51px;
   }
+
+  .fourWaters{
+    margin-left: 153px;
+  }
   
   .hidden {
     color: transparent;
   }
 
-.Btn {
-  }
+.tableHeader {
+  align-self: flex-start;
+}
+
+.headerMapName {
+  align-self: center;
+}

@@ -4,11 +4,6 @@
   --m: 1px; /* margin */
   --f: calc(1.732 * var(--s) + 4 * var(--m) - 1px);
   white-space: nowrap;
-  margin-left: 100px;
-}
-
-.singleHexagon {
-  font-size: 0; /*disable white space between inline block element */
 }
 
 .singleHexagon > div {
@@ -53,6 +48,10 @@
   background-image: url("http://localhost:3000/images/desert.jpg");
 }
 
+.water {
+  background-image: url("http://localhost:3000/images/water.jpg");
+}
+
 .three {
   margin-left: 102px;
 }
@@ -63,4 +62,12 @@
 
 .hidden {
   color: transparent;
+}
+
+.tableHeader {
+  align-self: flex-start;
+}
+
+.headerMapName {
+  align-self: center;
 }/*# sourceMappingURL=App.css.map */

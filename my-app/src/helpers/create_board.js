@@ -1,4 +1,3 @@
-'use strict';
 var dockerNames = require('docker-names');
 
 // creating the array with the background images for the hexagons
@@ -10,6 +9,11 @@ const clay = new Array(3).fill('clay');
 const allElementsInitial = [...wood, ...weat, ...sheep, ...stone, ...clay, 'desert'];
 // create the array for the numbers on each hexagon
 const numbersInitial = [2, 3, 3, 4, 4, 5, 5, 6, 6, 8, 8, 9, 9, 10, 10, 11, 11, 12, -1];
+const ports = ['3:1Port', 'water', 'weatPort', 'water', 'water', 'stonePort', '3:1Port', 'water', 'water','3:1Port', 'clayPort', 'water', 'water', 'sheepPort', '3:1Port', 'water',  'woodPort', 'water' ];
+
+
+
+
 
 // shuffle the backgroundimages
 const shuffleBackground = ({ allElements }) => {
@@ -44,4 +48,4 @@ const getRandomName = () => {
 }
 
 
-export { shuffleBackground, allElementsInitial, shuffleNumberArray, numbersInitial, getRandomName }
+export { shuffleBackground, allElementsInitial, shuffleNumberArray, numbersInitial, getRandomName, ports }
