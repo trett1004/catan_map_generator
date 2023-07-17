@@ -17,7 +17,7 @@ export function BasicRating({ allElements, numbers, mapName, dbData, setData }) 
         '& > legend': { mt: 2 },
       }}
     >
-      <Typography component="legend">Please rate the board</Typography>
+      <Typography variant="h5" component="legend">Please rate the map</Typography>
       <Rating
         name="simple-controlled"
         precision={0.5}
