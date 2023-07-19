@@ -21,13 +21,16 @@ export default function DenseTable({ setAllElements, setNumbers, setName, dbData
     let tableData = [];
     if (dbData) {
         tableData = dbData.map((element) => {
-            // rating is an array, so compute average of array
+            // calculate the average rating. rating is an array, so compute average of array elements
             const ratingArr = element['rating']
             const sumOfRatings = ratingArr.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-            const averageRating =  sumOfRatings / ratingArr.length
+            const averageRating = sumOfRatings / ratingArr.length
             // return average Rating, number of votes and the name of the map
             return createData(averageRating, ratingArr.length, element['mapName']);
         });
+        // Sort the tableData array according to best averagerating in descending order after mapping all the elements so the table displays the top rated maps
+        tableData.sort((a, b) => b.rating - a.rating);
+
     }
     return (
         <TableContainer component={Paper}>
@@ -46,7 +49,7 @@ export default function DenseTable({ setAllElements, setNumbers, setName, dbData
                         // iterate the db entries to find the respective map
                         // find if there are matching map names
                         const currentTableRowData = dbData.find(element => element.mapName === row.mapName)
-                        // change the states so the map is desplayed in the hexagonfields
+                        // change the states of the hexagonfields so the selected map is desplayed
                         const loadMap = () => {
                             setAllElements(currentTableRowData['fieldArray']);
                             setNumbers(currentTableRowData['numberArray']);

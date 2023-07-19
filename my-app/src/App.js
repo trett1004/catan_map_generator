@@ -16,8 +16,6 @@ import './App.scss';
 
 
 function App() {
-  console.log('app.js ports', ports)
-  // console.log('portsInitial', portsInitial)
   // Hooks
   const [allElements, setAllElements] = useState(allElementsInitial);
   const [numbers, setNumbers] = useState(numbersInitial)
