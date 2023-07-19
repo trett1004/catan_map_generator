@@ -13,7 +13,6 @@ export const Hexagon = ({ allElements, numbers, className, idxAdder, arrayStart,
         <div className={className}>
             {/* water fields on the left */}
             {arrayEnd !== 0 && ports?.slice(portIdx, portIdxEnd).map((element, idx) => {
-                console.log('idx', idx)
                 return (
                     <div key={idx} className={element}>
                         <div className='hidden'>{ports[portIdx]}</div>
@@ -38,7 +37,6 @@ export const Hexagon = ({ allElements, numbers, className, idxAdder, arrayStart,
             )}
             {/* water fields on the right */}
             {arrayEnd !== 0 && ports?.slice(portIdx + 1, portIdx + 2).map((element, idx) => {
-                console.log('idx', idx)
                 return (
                     <div key={idx} className={`${idx === 0 ? "portRotation180Deg" : ""} ${element}`}>
                         <div className='hidden'>{ports[portIdxEnd]}</div>
