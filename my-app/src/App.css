@@ -13,7 +13,7 @@
   display: inline-flex;
   font-size: 30px;
   font-weight: bold;
-  color: antiquewhite;
+  color: white;
   -webkit-clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
           clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
   margin-bottom: calc(var(--m) - var(--s) * 0.2885);
@@ -23,33 +23,82 @@
 
 .wood {
   background-image: url("http://localhost:3000/images/wood.jpg");
+  background-size: cover;
 }
 
 .clay {
   background-image: url("http://localhost:3000/images/clay.jpg");
+  background-size: cover;
 }
 
 .sheep {
   background-image: url("http://localhost:3000/images/sheep.jpg");
   opacity: 0.9;
+  background-size: cover;
 }
 
 .weat {
   background-image: url("http://localhost:3000/images/weat.jpg");
   opacity: 0.8;
   background-blend-mode: lighten;
+  background-size: cover;
 }
 
 .stone {
   background-image: url("http://localhost:3000/images/stone.jpg");
+  background-size: cover;
 }
 
 .desert {
   background-image: url("http://localhost:3000/images/desert.jpg");
+  background-size: cover;
 }
 
 .water {
   background-image: url("http://localhost:3000/images/water.jpg");
+  background-size: cover;
+}
+
+.sheepPort {
+  background-image: url("http://localhost:3000/images/port_sheep.jpg");
+  background-size: cover;
+}
+
+.weatPort {
+  background-image: url("http://localhost:3000/images/port_weat.jpg");
+  background-size: cover;
+}
+
+.woodPort {
+  background-image: url("http://localhost:3000/images/port_wood.jpg");
+  background-size: cover;
+}
+
+.clayPort {
+  background-image: url("http://localhost:3000/images/port_clay.jpg");
+  background-size: cover;
+}
+
+.stonePort {
+  background-image: url("http://localhost:3000/images/port_stone.jpg");
+  background-size: cover;
+}
+
+.threeToOnePort {
+  background-image: url("http://localhost:3000/images/port_3to1.jpg");
+  background-size: cover;
+}
+
+.portRotation180Deg {
+  transform: rotate(180deg);
+}
+
+.portRotation60Deg {
+  transform: rotate(60deg);
+}
+
+.portRotation200Deg {
+  transform: rotate(-60deg);
 }
 
 .three {
@@ -58,6 +107,10 @@
 
 .four {
   margin-left: 51px;
+}
+
+.fourWaters {
+  margin-left: 153px;
 }
 
 .hidden {
