@@ -7,12 +7,13 @@ const dbName = "games";
 let myDB = db.use(dbName);
 
 const express = require('express');
+const path = require('path');
 
 const server = express();
-const port = 3300;
+const port = process.env.PORT || 3300;
 
 // Einbinden der Middleware, die die statischen Dateien ausliefert
-server.use(express.static('public'));
+server.use(express.static(path.join(__dirname + '/public')));
 server.use(express.json());
 
 // handle get request (table of best maps)

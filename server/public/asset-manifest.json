@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.238d72fe.css",
+    "main.js": "/static/js/main.12aa3346.js",
+    "static/media/port_3to1.jpg": "/static/media/port_3to1.0ccc65c974de3708c4eb.jpg",
+    "static/media/port_clay.jpg": "/static/media/port_clay.4417932c91679157a927.jpg",
+    "static/media/port_weat.jpg": "/static/media/port_weat.2f223a6c514b22f8cdd6.jpg",
+    "static/media/port_wood.jpg": "/static/media/port_wood.4db540bca1e0a77d30b3.jpg",
+    "static/media/port_stone.jpg": "/static/media/port_stone.54898199d55e26df9656.jpg",
+    "static/media/water.jpg": "/static/media/water.2efca5a7844c8ad45a43.jpg",
+    "static/media/wood.jpg": "/static/media/wood.36ba20a21d8e485a6f87.jpg",
+    "static/media/clay.jpg": "/static/media/clay.7a5106616768d8ebebd7.jpg",
+    "static/media/stone.jpg": "/static/media/stone.5f1e6c2927a735d4e44d.jpg",
+    "static/media/desert.jpg": "/static/media/desert.1a28cf0dbe8be5ba3772.jpg",
+    "static/media/weat.jpg": "/static/media/weat.f8eef32a5849a9752705.jpg",
+    "static/media/port_sheep.jpg": "/static/media/port_sheep.6ff68f03c868bcd4b87a.jpg",
+    "static/media/sheep.jpg": "/static/media/sheep.929aa813e4b98a11a704.jpg",
+    "index.html": "/index.html",
+    "main.238d72fe.css.map": "/static/css/main.238d72fe.css.map",
+    "main.12aa3346.js.map": "/static/js/main.12aa3346.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.238d72fe.css",
+    "static/js/main.12aa3346.js"
+  ]
+}

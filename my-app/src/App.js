@@ -52,6 +52,7 @@ function App() {
         justifyContent: 'center',
         alignItems: 'center',
         // height: '100vh'
+        marginLeft: '200px'
       }}>
       <Typography style={{marginTop: '20px', alignItems: 'center'}}variant="h2" component="legend">Catan Map Generator</Typography>
       <Btn style={{marginTop: '20px'}} onClick={handleShuffleClick} variant="contained" content="SHUFFLE" className="Btn"/>
