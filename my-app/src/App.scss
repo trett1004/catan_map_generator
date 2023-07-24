@@ -1,32 +1,91 @@
 .hexagonField {
     display:grid;
-    // flex-direction: column;
-    // flex-wrap: nowrap;
-    --s: 100px;  /* size  */
-    --m: 1px;    /* margin */
-    --f: calc(1.732 * var(--s) + 4 * var(--m)  - 1px);
-    white-space: nowrap;
+    // --f: calc(1.732 * var(--s) + 4 * var(--m)  - 1px);
     //margin-left: 300px;
   }
-  
+
   // .singleHexagon {
   //   // font-size: 0; /*disable white space between inline block element */
   // }
 
   .singleHexagon > div {
+    --s: 100px;  /* size  */
+    --m: 1px;    /* margin */
+    --h: calc(var(--s)*1.1547);
+    --b: calc(var(--m) - var(--s)*0.2885);
     width: var(--s);
     margin: var(--m);
-    height: calc(var(--s)*1.1547);
+    height: var(--h);
+    margin-bottom: calc(var(--m) - var(--s)*0.2885);
     display:inline-flex;
     font-size:30px;
     font-weight: bold;
     color: white;
+    // make a hexagon out of the rectangle
     clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
-    // background: burlywood;
-    margin-bottom: calc(var(--m) - var(--s)*0.2885);
+    // Align the numbers on the hexagon
     align-items: center;
     justify-content: center;
 }
+
+/* Mobile view (up to 768px) */
+@media screen and (max-width: 768px) {
+  .singleHexagon > div {
+    --s: 50px; /* Adjust size for mobile */
+    --m: 0.5px; /* Adjust margin for mobile */
+    --h: calc(var(--s) * 1.1547); /* Update --h directly based on adjusted --s */
+    --b: calc(var(--m) - var(--s) * 0.2885); /* Update --b directly based on adjusted --m */
+  }
+}
+
+.shiftLeftElement {
+  margin-left: var(--shiftLeft);
+}
+
+// shifts the hexagon row with 3 landfields to the appropriate position
+.three {
+  --shiftLeft: 102px;
+  margin-left: var(--shiftLeft);
+}
+
+@media screen and (max-width: 768px) {
+  .three {
+    // margin-left: calc(var(--shiftLeft) * 0.6px);
+    margin-left: calc(var(--shiftLeft) * 0.5);
+    // margin-left: 61px;
+  }
+}
+
+// shifts the hexagon row with 4 landfields to the appropriate position
+.four {
+  --shiftLeft: 51px;
+  margin-left: var(--shiftLeft);
+}
+
+@media screen and (max-width: 768px) {
+  .four {
+    // margin-left: calc(var(--shiftLeft) * 0.6px);
+    margin-left: calc(var(--shiftLeft) * 0.5);
+    // margin-left: 61px;
+  }
+}
+
+// shifts the hexagon upper and lowest waterrow with 4 waterfields to the appropriate position
+.fourWaters{
+  --shiftLeft: 153px;
+  margin-left: var(--shiftLeft);
+}
+
+
+
+@media screen and (max-width: 768px) {
+  .fourWaters {
+    // margin-left: calc(var(--shiftLeft) * 0.6px);
+    margin-left: calc(var(--shiftLeft) * 0.5);
+    // margin-left: 61px;
+  }
+}
+
 
 .hexagonBG {
     // display: flex;
@@ -114,19 +173,9 @@
   }
 
 
-  
-  .three {
-    margin-left: 102px;
-  }
-  
-  .four {
-    margin-left: 51px;
-  }
 
-  .fourWaters{
-    margin-left: 153px;
-  }
-  
+
+
   .hidden {
     color: transparent;
   }

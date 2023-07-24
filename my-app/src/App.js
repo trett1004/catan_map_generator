@@ -1,7 +1,7 @@
 
 // project external imports
 import React, { useState, useEffect } from 'react';
-import Container from '@mui/material/Container';
+// import Container from '@mui/material/Container';
 import { BasicRating } from './components/Rating/rating.js'
 import DenseTable from './components/Table/table_of_ratings.js'
 import Typography from '@mui/material/Typography';
@@ -45,14 +45,13 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <Container style={{
+      <div style={{
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
         // height: '100vh'
-        marginLeft: '200px'
+        // marginLeft: '200px'
       }}>
       <Typography style={{marginTop: '20px', alignItems: 'center'}}variant="h2" component="legend">Catan Map Generator</Typography>
       <Btn style={{marginTop: '20px'}} onClick={handleShuffleClick} variant="contained" content="SHUFFLE" className="Btn"/>
@@ -90,8 +89,8 @@ function App() {
       <h3 className='tableHeader'>Top rated maps</h3>
       <DenseTable setAllElements={setAllElements} setNumbers={setNumbers} setName={setName} dbData={dbData} setData={setData}/>
       {/* <p>{!data ? "Loading..." : data}</p> */}
-      </Container>
-    </div>
+      </div>
+
   );
 
 

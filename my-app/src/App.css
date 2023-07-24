@@ -1,26 +1,69 @@
 .hexagonField {
   display: grid;
-  --s: 100px; /* size  */
-  --m: 1px; /* margin */
-  --f: calc(1.732 * var(--s) + 4 * var(--m) - 1px);
-  white-space: nowrap;
 }
 
 .singleHexagon > div {
+  --s: 100px; /* size  */
+  --m: 1px; /* margin */
+  --h: calc(var(--s)*1.1547);
+  --b: calc(var(--m) - var(--s)*0.2885);
   width: var(--s);
   margin: var(--m);
-  height: calc(var(--s) * 1.1547);
+  height: var(--h);
+  margin-bottom: calc(var(--m) - var(--s) * 0.2885);
   display: inline-flex;
   font-size: 30px;
   font-weight: bold;
   color: white;
   -webkit-clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
           clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
-  margin-bottom: calc(var(--m) - var(--s) * 0.2885);
   align-items: center;
   justify-content: center;
 }
 
+/* Mobile view (up to 768px) */
+@media screen and (max-width: 768px) {
+  .singleHexagon > div {
+    --s: 50px; /* Adjust size for mobile */
+    --m: 0.5px; /* Adjust margin for mobile */
+    --h: calc(var(--s) * 1.1547); /* Update --h directly based on adjusted --s */
+    --b: calc(var(--m) - var(--s) * 0.2885); /* Update --b directly based on adjusted --m */
+  }
+}
+.shiftLeftElement {
+  margin-left: var(--shiftLeft);
+}
+
+.three {
+  --shiftLeft: 102px;
+  margin-left: var(--shiftLeft);
+}
+
+@media screen and (max-width: 768px) {
+  .three {
+    margin-left: calc(var(--shiftLeft) * 0.5);
+  }
+}
+.four {
+  --shiftLeft: 51px;
+  margin-left: var(--shiftLeft);
+}
+
+@media screen and (max-width: 768px) {
+  .four {
+    margin-left: calc(var(--shiftLeft) * 0.5);
+  }
+}
+.fourWaters {
+  --shiftLeft: 153px;
+  margin-left: var(--shiftLeft);
+}
+
+@media screen and (max-width: 768px) {
+  .fourWaters {
+    margin-left: calc(var(--shiftLeft) * 0.5);
+  }
+}
 .wood {
   background-image: url("../public/images/wood.jpg");
   background-size: cover;
@@ -99,18 +142,6 @@
 
 .portRotation200Deg {
   transform: rotate(-60deg);
-}
-
-.three {
-  margin-left: 102px;
-}
-
-.four {
-  margin-left: 51px;
-}
-
-.fourWaters {
-  margin-left: 153px;
 }
 
 .hidden {
