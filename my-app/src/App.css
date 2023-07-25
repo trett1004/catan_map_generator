@@ -22,12 +22,13 @@
 }
 
 /* Mobile view (up to 768px) */
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 362px) and (max-width: 768px) {
   .singleHexagon > div {
     --s: 50px; /* Adjust size for mobile */
     --m: 0.5px; /* Adjust margin for mobile */
     --h: calc(var(--s) * 1.1547); /* Update --h directly based on adjusted --s */
     --b: calc(var(--m) - var(--s) * 0.2885); /* Update --b directly based on adjusted --m */
+    font-size: 15px;
   }
 }
 .shiftLeftElement {
@@ -64,6 +65,10 @@
     margin-left: calc(var(--shiftLeft) * 0.5);
   }
 }
+.hexagonBg {
+  background-color: black;
+}
+
 .wood {
   background-image: url("../public/images/wood.jpg");
   background-size: cover;
