@@ -97,6 +97,7 @@
   text-align: center;
   border: solid rgb(54, 54, 54) 1px;
   font-family: "lucida bright";
+  font-size: 32px;
 }
 
 
@@ -182,6 +183,8 @@
 
   .hidden {
     color: transparent;
+    background: transparent;
+    border: transparent;
   }
 
 .tableHeader {
