@@ -20,7 +20,7 @@
     display:inline-flex;
     font-size:30px;
     font-weight: bold;
-    color: white;
+    color: black;
     // make a hexagon out of the rectangle
     clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
     // Align the numbers on the hexagon
@@ -29,12 +29,14 @@
 }
 
 /* Mobile view (up to 768px) */
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 362px) and (max-width: 768px) {
   .singleHexagon > div {
     --s: 50px; /* Adjust size for mobile */
     --m: 0.5px; /* Adjust margin for mobile */
     --h: calc(var(--s) * 1.1547); /* Update --h directly based on adjusted --s */
     --b: calc(var(--m) - var(--s) * 0.2885); /* Update --b directly based on adjusted --m */
+    font-size:15px;
+
   }
 }
 
@@ -87,8 +89,14 @@
 }
 
 
-.hexagonBG {
-    // display: flex;
+.hexagonBg {
+  background-color: #efbe70;
+  padding: 5px;
+  border-radius: 100%;
+  width: 33px;
+  text-align: center;
+  border: solid rgb(54, 54, 54) 1px;
+  font-family: "lucida bright";
 }
 
 
@@ -171,10 +179,6 @@
   .portRotation200Deg {
     transform: rotate(-60deg);
   }
-
-
-
-
 
   .hidden {
     color: transparent;
