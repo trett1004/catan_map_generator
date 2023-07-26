@@ -1,7 +1,15 @@
 import React from 'react';
 
+
 const getClass = (idx, idxAdder, numbers) => {
-    return numbers[idx + idxAdder] === -1 ? "hexagonBg hidden" : "hexagonBg";
+    // check it it s -1 than hide, else if  6 or 8 than make red, else leave it normal
+    return numbers[idx + idxAdder] === -1
+        ? "hexagonBg hidden"
+        : numbers[idx + idxAdder] === 6
+            ? "hexagonBg redNumber"
+            : numbers[idx + idxAdder] === 8
+                ? "hexagonBg redNumber"
+                : "hexagonBg";
 }
 
 // const getPortClass = (portIdx) => {
