@@ -14,7 +14,7 @@
   display: inline-flex;
   font-size: 30px;
   font-weight: bold;
-  color: white;
+  color: black;
   -webkit-clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
           clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
   align-items: center;
@@ -66,9 +66,23 @@
   }
 }
 .hexagonBg {
-  background-color: black;
+  background-color: #efbe70;
+  padding: 5px;
+  border-radius: 100%;
+  width: 33px;
+  text-align: center;
+  border: solid rgb(54, 54, 54) 1px;
+  font-family: "lucida bright";
+  font-size: 32px;
 }
 
+@media screen and (max-width: 768px) {
+  .hexagonBg {
+    padding: 3px;
+    width: 19px;
+    font-size: 18px;
+  }
+}
 .wood {
   background-image: url("../public/images/wood.jpg");
   background-size: cover;
@@ -151,6 +165,12 @@
 
 .hidden {
   color: transparent;
+  background: transparent;
+  border: transparent;
+}
+
+.redNumber {
+  color: red;
 }
 
 .tableHeader {
