@@ -13,8 +13,6 @@ import { Hexagon as HexagonRow } from './components/HexagonRow/HexagonRow.js';
 
 import './App.scss';
 
-
-
 function App() {
   // Hooks
   const [allElements, setAllElements] = useState(allElementsInitial);
@@ -24,13 +22,11 @@ function App() {
   const [dbData, setData] = React.useState(null);
   const [databaseExists, setDatabaseExists] = useState(false);
 
-  // GET Request
+  // GET Request to server
   useEffect(() => {
-    console.log('test')
     fetch("/api")
       .then((res) => res.json())
       .then((resJson) => {
-        console.log('hele', resJson)
         setData(resJson.array);
       })
       .then(() => setDatabaseExists(true))
@@ -70,12 +66,6 @@ function App() {
         {/* <h1 style={{ textAlign: 'center' }}>Map: {mapName}</h1> */}
         {/* backgroundimages-array is sliced and numbers-arrayindex is called for each row.
         Background images and numbers from the respective arrays are implemented after shuffle*/}
-
-        {/* <div className='singleHexagon'>
-        <div className='water'> */}
-        {/* <div className={getClass(idx, idxAdder, numbers)}>{numbers[idx + idxAdder]}</div> */}
-        {/* </div>
-      </div> */}
 
         {/* First row of water hexagon fields */}
         <HexagonRow ports={ports} portIdx={0} portIdxEnd={4} allElements={allElements} numbers={numbers} arrayStart={0} arrayEnd={0} idxAdder={0} className="singleHexagon fourWaters" />
