@@ -44,7 +44,7 @@ const handleRateClick = (allElements, numbers, setAlert, value, mapName, dbData,
     ratePromise = fetch('/rate_existing_map', {
       method: 'POST',
       body: JSON.stringify({
-        id: foundMap['_id'],
+        _id: foundMap['_id'],
         rev: foundMap['_rev'],
         rating: value,
       }),
@@ -57,6 +57,7 @@ const handleRateClick = (allElements, numbers, setAlert, value, mapName, dbData,
     ratePromise = fetch('/rate_new_map', {
       method: 'POST',
       body: JSON.stringify({
+        _id: 0,
         fieldArray: allElements,
         numberArray: numbers,
         rating: [value],
