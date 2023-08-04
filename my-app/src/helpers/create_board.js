@@ -12,9 +12,6 @@ const numbersInitial = [2, 3, 3, 4, 4, 5, 5, 6, 6, 8, 8, 9, 9, 10, 10, 11, 11, 1
 const ports = ['threeToOnePort', 'water', 'weatPort', 'water', 'water', 'stonePort', 'threeToOnePort', 'water', 'water','threeToOnePort', 'clayPort', 'water', 'water', 'sheepPort', 'threeToOnePort', 'water',  'woodPort', 'water' ];
 
 
-
-
-
 // shuffle the backgroundimages
 const shuffleBackground = ({ allElements }) => {
     const shuffledElements = [...allElements];

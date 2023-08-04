@@ -19,3 +19,8 @@ const data = JSON.stringify(user, null, 4)
       console.log(`File is written successfully!`)
     }
   })
+
+
+  {
+    "allMapsArrauy": []
+  }

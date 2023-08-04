@@ -36,7 +36,7 @@ export function BasicRating({ allElements, numbers, mapName, dbData, setData }) 
 const handleRateClick = (allElements, numbers, setAlert, value, mapName, dbData, setData) => {
   // to check if map already exists in db, get data from database
 
-  // find map
+  // find map to determine if an existing map should be updated or a new entry should be created
   let foundMap = dbData.find(element => element['mapName'] === mapName)
   let ratePromise;
   // if existing map is rated update the rating array in db
@@ -70,14 +70,17 @@ const handleRateClick = (allElements, numbers, setAlert, value, mapName, dbData,
     })
   }
   ratePromise
-  .then((res) => res.json())
+  .then((res) => {
+    console.log({ res })
+    return res.json()
+  })
   .then((dbData) => {
+    console.log('ratepromise frontend', dbData)
     setData(dbData.array);
-    console.log(dbData.array)
   })
   .then((_) => {
     setAlert(true);
     window.setTimeout(() => setAlert(false), 2000)
   })
-  .catch ((err) => console.log(err.message))
+  .catch ((err) => console.log(err))
 }

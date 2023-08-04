@@ -25,8 +25,12 @@ function App() {
   // GET Request to server
   useEffect(() => {
     fetch("/api")
-      .then((res) => res.json())
+      .then((res) => {
+        console.info('app.js', res);
+        return res.json();
+      })
       .then((resJson) => {
+        console.log('app.js', resJson);
         setData(resJson.array);
       })
       .then(() => setDatabaseExists(true))

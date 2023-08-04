@@ -15,13 +15,9 @@ function createData(rating, votes, mapName) {
 }
 
 export default function DenseTable({ setAllElements, setNumbers, setName, dbData }) {
-
-
-
     // prepare data for table
     let tableData = [];
     if (dbData) {
-        console.log('dbData', dbData)
         tableData = dbData.map((element) => {
             // calculate the average rating. rating is an array, so compute average of array elements
             const ratingArr = element['rating']

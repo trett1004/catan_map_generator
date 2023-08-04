@@ -16,7 +16,7 @@ server.get("/api", (req, res) => {
   fs.readFile("./databases.json", "utf8", (err, data) => {
     if (err) {
       console.error("Error reading file", err);
-      return res.status(500).json({error: err });
+      return res.status(500).json({ error: err });
     }
     try {
       const mapsArray = JSON.parse(data);
@@ -37,28 +37,29 @@ server.post('/rate_new_map', function requestHandler(req, res) {
   fs.readFile("./databases.json", "utf8", (err, data) => {
     if (err) {
       console.error("Error reading file", err);
-      return res.status(500).json({error: err });
+      return res.status(500).json({ error: err });
     } try {
 
-       // Parse the existing JSON data
-      const allMapsData = JSON.parse(data);
+      // Parse the existing JSON data
+      const mapsArray = JSON.parse(data);
 
       // check length of map array and give the next id to the newly rated map
-      const arrLength = allMapsData.allMapsArray.length
+      const arrLength = mapsArray.allMapsArray.length
       req.body['_id'] = arrLength + 1;
 
       // Add the new user to the 'users' array
-      allMapsData.allMapsArray.push(req.body);
+      mapsArray.allMapsArray.push(req.body);
       // Convert the updated data back to JSON
-      const updatedData = JSON.stringify(allMapsData, null, 2);
+      const updatedData = JSON.stringify(mapsArray, null, 2);
 
       // Write the updated data back to the JSON file
       fs.writeFile("./databases.json", updatedData, (err) => {
         if (err) {
           console.error("Error writing file", err);
-          return res.status(500).json({error: err });
+          return res.status(500).json({ error: err });
         }
         console.log(`File is written successfully!`)
+        res.json({ array: mapsArray['allMapsArray'], message: "API TEST:Hello from server rate new map!" });
       });
     }
     catch (parseErr) {
@@ -67,39 +68,50 @@ server.post('/rate_new_map', function requestHandler(req, res) {
   });
 });
 
-
+//********************************************************* */
 // handle post request for rating an existing map
 server.post('/rate_existing_map', function requestHandler(req, res) {
 
   //req>
-//   {
-//   id: '5d3f7f24a4e4202411a911488a025b80',
-//   rev: '8-dcc03e9f55290be31615be71b9005682',
-//   rating: 0.5
-// }
+  //   {
+  //   id: '5d3f7f24a4e4202411a911488a025b80',
+  //   rev: '8-dcc03e9f55290be31615be71b9005682',
+  //   rating: 0.5
+  // }
 
   const newRating = req.body['rating'];
   const mapName = req.body['mapName'];
   const id = req.body['_id']
-  console.log('id', req.body);
 
   fs.readFile("./databases.json", "utf8", (err, data) => {
     if (err) {
       console.error("Error reading file", err);
-      return res.status(500).json({error: err });
-    } try {
+      return res.status(500).json({ error: err });
+    }
+    try {
       const mapsArray = JSON.parse(data);
-      res.json({ array: mapsArray['allMapsArray'], message: "API TEST:Hello from server!" });
 
-      const foundMap = mapsArray['allMapsArray'].find(element => element['_id'] === id);
-      foundMap['rating'].push(newRating);
-      foundMap['voteCount'] += 1;
-      console.log('mapsArray', mapsArray)
-
+      // loop over all maps to find the id. If found update the array element with added rating and increased vote count
+      mapsArray['allMapsArray'].forEach(element => {
+        if (element['_id'] === id) {
+          element['rating'].push(newRating);
+          element['voteCount'] += 1;
+        }
+      })
+      // write the updated data back to the JSON file
+      fs.writeFile(
+        "./databases.json",
+        JSON.stringify(mapsArray),
+        () => {
+          console.log('File is written successfully!');
+          res.json({ array: mapsArray['allMapsArray'], message: "API TEST:Hello from server rate existing map!" });
+        }
+      );
     } catch (parseErr) {
       console.error("Error parsing JSON file", parseErr);
       res.status(500).json({ error: parseErr });
     }
+
   })
 });
 
