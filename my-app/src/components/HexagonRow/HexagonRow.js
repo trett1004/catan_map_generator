@@ -1,6 +1,7 @@
 import React from 'react';
 
 
+
 const getClass = (idx, idxAdder, numbers) => {
     // check it it s -1 than hide, else if  6 or 8 than make red, else leave it normal
     return numbers[idx + idxAdder] === -1
@@ -12,14 +13,11 @@ const getClass = (idx, idxAdder, numbers) => {
                 : "hexagonBg";
 }
 
-// const getPortClass = (portIdx) => {
-//     return numbers[portIdx] === -1 ? "hexagonBg hidden" : "hexagonBg";
-// }
-
-export const Hexagon = ({ allElements, numbers, className, idxAdder, arrayStart, arrayEnd, ports, portIdx, portIdxEnd, ...props }) => {
+// this component creates a row of hexagons, using the props from the instance of the component you can steer which fields and numbers are displayed.
+export const HexagonRow = ({ landfields, numbers, className, idxAdder, arrayStart, arrayEnd, ports, portIdx, portIdxEnd, ...props }) => {
     return (
         <div className={className}>
-            {/* water fields on the left */}
+            {/* starting water fields on the left */}
             {arrayEnd !== 0 && ports?.slice(portIdx, portIdxEnd).map((element, idx) => {
                 return (
                     <div key={idx} className={element}>
@@ -28,9 +26,9 @@ export const Hexagon = ({ allElements, numbers, className, idxAdder, arrayStart,
                 );
             })}
             {/* most upper and most lowest water hexagons and all land fields in the middle */}
-            {/* land fields */}
+            {/* continueing with land fields*/}
             {arrayEnd !== 0 ? (
-                allElements.slice(arrayStart, arrayEnd).map((element, idx) => (
+                landfields.slice(arrayStart, arrayEnd).map((element, idx) => (
                     <div key={idx} className={element}>
                         <div className={getClass(idx, idxAdder, numbers)}>{numbers[idx + idxAdder]}</div>
                     </div>
@@ -43,7 +41,7 @@ export const Hexagon = ({ allElements, numbers, className, idxAdder, arrayStart,
                     </div>
                 ))
             )}
-            {/* water fields on the right */}
+            {/* continuing with water fields on the right */}
             {arrayEnd !== 0 && ports?.slice(portIdx + 1, portIdx + 2).map((element, idx) => {
                 return (
                     <div key={idx} className={`${idx === 0 ? "portRotation180Deg" : ""} ${element}`}>

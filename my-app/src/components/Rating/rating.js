@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import Btn from '../Btn/Btn.js';
 import GreenAlert from '../Alert/Alert.js';
 
-export function BasicRating({ allElements, numbers, mapName, dbData, setData }) {
+export function BasicRating({ landfields, numbers, mapName, dbData, setData }) {
   const [value, setValue] = React.useState(2.5);
   const [alert, setAlert] = React.useState(false);
 
@@ -26,14 +26,14 @@ export function BasicRating({ allElements, numbers, mapName, dbData, setData }) 
           setValue(newValue);
         }}
       />
-      <Btn onClick={() => handleRateClick(allElements, numbers, setAlert, value, mapName, dbData, setData)} content="RATE" />
+      <Btn onClick={() => handleRateClick(landfields, numbers, setAlert, value, mapName, dbData, setData)} content="RATE" />
       <div>{alert ? <GreenAlert content="Rating received. Please Update page to view" severity="success" /> : <></>}</div>
     </Box>
   );
 }
 
 // Save board to db
-const handleRateClick = (allElements, numbers, setAlert, value, mapName, dbData, setData) => {
+const handleRateClick = (landfields, numbers, setAlert, value, mapName, dbData, setData) => {
   // to check if map already exists in db, get data from database
 
   // find map to determine if an existing map should be updated or a new entry should be created
@@ -58,7 +58,7 @@ const handleRateClick = (allElements, numbers, setAlert, value, mapName, dbData,
       method: 'POST',
       body: JSON.stringify({
         _id: 0,
-        fieldArray: allElements,
+        fieldArray: landfields,
         numberArray: numbers,
         rating: [value],
         voteCount: 1,
