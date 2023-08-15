@@ -1,0 +1,54 @@
+{
+    "allMapsArray": [
+      {
+        "_id": 1,
+        "fieldArray": [
+          "wood",
+          "wood",
+          "wood",
+          "wood",
+          "weat",
+          "weat",
+          "weat",
+          "weat",
+          "sheep",
+          "sheep",
+          "sheep",
+          "sheep",
+          "stone",
+          "stone",
+          "stone",
+          "clay",
+          "clay",
+          "clay",
+          "desert"
+        ],
+        "numberArray": [
+          2,
+          3,
+          3,
+          4,
+          4,
+          5,
+          5,
+          6,
+          6,
+          8,
+          8,
+          9,
+          9,
+          10,
+          10,
+          11,
+          11,
+          12,
+          -1
+        ],
+        "rating": [
+          2.5
+        ],
+        "voteCount": 1,
+        "mapName": "eager_diffie"
+      }
+    ]
+  }

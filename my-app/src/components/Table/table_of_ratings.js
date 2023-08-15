@@ -14,7 +14,7 @@ function createData(rating, votes, mapName) {
     return { rating, votes, mapName };
 }
 
-export default function DenseTable({ setAllElements, setNumbers, setName, dbData }) {
+export default function DenseTable({ setLandfields, setNumbers, setName, dbData }) {
     // prepare data for table
     let tableData = [];
     if (dbData) {
@@ -45,11 +45,11 @@ export default function DenseTable({ setAllElements, setNumbers, setName, dbData
 
                     {tableData.map((row) => {
                         // iterate the db entries to find the respective map
-                        // find if there are matching map names
+                        // find matching map names
                         const currentTableRowData = dbData.find(element => element.mapName === row.mapName)
                         // change the states of the hexagonfields so the selected map is desplayed
                         const loadMap = () => {
-                            setAllElements(currentTableRowData['fieldArray']);
+                            setLandfields(currentTableRowData['fieldArray']);
                             setNumbers(currentTableRowData['numberArray']);
                             setName(currentTableRowData['mapName']);
                         };
