@@ -48,4 +48,8 @@ Backend:
 - Implement Recaptcha
 - Button for sharing a map
 
+# Favicon Attribution
+<a href="https://www.flaticon.com/free-icons/tree" title="tree icons">Tree icons created by Freepik - Flaticon</a>
+
+
 
