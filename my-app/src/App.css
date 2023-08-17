@@ -5,7 +5,7 @@
 .singleHexagon > div {
   --s: 100px; /* size  */
   --m: 1px; /* margin */
-  --h: calc(var(--s)*1.1547); /* height */
+  --h: calc(var(--s)*1.1547);
   --b: calc(var(--m) - var(--s)*0.2885);
   width: var(--s);
   margin: var(--m);
@@ -146,7 +146,7 @@
   background-size: cover;
 }
 
-.threeToOnePort {
+.port3to1 {
   background-image: url("../public/images/port_3to1.jpg");
   background-size: cover;
 }
