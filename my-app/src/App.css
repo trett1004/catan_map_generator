@@ -1,3 +1,20 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  margin-top: 30px;
+  align-items: center;
+}
+
+.mapName {
+  margin: 30px 0px 20px 0px;
+  align-items: center;
+}
+
 .hexagonField {
   display: grid;
 }

@@ -50,16 +50,12 @@ function App() {
     setName(mapName);
   }
 
+
   return (
-    <div style={{
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center',
-    }}>
-      <Typography style={{ marginTop: '20px', alignItems: 'center' }} variant="h2" component="legend">Catan Map Generator</Typography>
+    <div className='main'>
+      <div className='header'><Typography variant="h2" component="legend">Catan Map Generator</Typography></div>
       <Btn style={{ marginTop: '20px' }} onClick={handleShuffleClick} variant="contained" content="SHUFFLE" className="Btn" />
-      <Typography style={{ marginTop: '20px', marginBottom: '20px' }} variant="h4" >Map: {mapName}</Typography>
+      <div className='mapName'><Typography variant="h4" >Map: {mapName}</Typography></div>
       <div className="hexagonField">
 
         {/* First row of water hexagon fields */}
