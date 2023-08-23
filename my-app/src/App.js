@@ -1,6 +1,6 @@
 
 // Project external imports
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'React';
 // Import Container from '@mui/material/Container';
 import { BasicRating } from './components/Rating/rating.js'
 import DenseTable from './components/Table/table_of_ratings.js'
@@ -9,7 +9,8 @@ import Typography from '@mui/material/Typography';
 // Project internal imports
 import { shufflelImages, landfieldsArr, shuffleNumberArray, fieldNumbersArr, getRandomName, portsArr } from './helpers/create_board.js';
 import Btn from './components/Btn/Btn.js';
-import { HexagonRow } from './components/HexagonRow/HexagonRow.js';
+import HexagonRow from './components/HexagonRow/HexagonRow';
+import CatanBoard from './components/CatanBoard/CatanBoard';
 
 import './App.scss';
 
@@ -53,6 +54,7 @@ function App() {
 
   return (
     <div className='main'>
+      <CatanBoard />
       <div className='header'><Typography variant="h2" component="legend">Catan Map Generator</Typography></div>
       <Btn style={{ marginTop: '20px' }} onClick={handleShuffleClick} variant="contained" content="SHUFFLE" className="Btn" />
       <div className='mapName'><Typography variant="h4" >Map: {mapName}</Typography></div>

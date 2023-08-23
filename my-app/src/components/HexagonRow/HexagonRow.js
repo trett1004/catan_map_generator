@@ -1,6 +1,4 @@
-import React from 'react';
-
-
+import React from "React";
 
 const getClass = (idx, idxAdder, numbers) => {
     // check it it s -1 than hide, else if  6 or 8 than make red, else leave it normal
@@ -53,4 +51,6 @@ export const HexagonRow = ({ landfields, numbers, className, idxAdder, arrayStar
         </div>
     );
 }
+
+export default HexagonRow;
 
