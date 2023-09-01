@@ -1,42 +1,13 @@
-import react, {useState} from 'React';
+import react, {useState} from 'react';
 
 import { HexagonRow } from "../HexagonRow/HexagonRow";
-import {
-  shufflelImages,
-  landfieldsArr,
-  shuffleNumberArray,
-  fieldNumbersArr,
-  getRandomName,
-  portsArr,
-} from "../../helpers/create_board.js";
-import Btn from "../Btn/Btn.js";
+import { portsArr } from "../../helpers/create_board.js";
 
-function CatanBoard() {
-  // Hooks
-  const [landfields, setLandfields] = useState(landfieldsArr);
-  const [numbers, setNumbers] = useState(fieldNumbersArr);
-  const [mapName, setName] = useState(getRandomName());
-
-  const handleShuffleClick = () => {
-    const shuffledElements = shufflelImages({ landfields });
-    setLandfields(shuffledElements);
-
-    const shuffledNumbers = shuffleNumberArray({ numbers, shuffledElements });
-    setNumbers(shuffledNumbers);
-
-    const mapName = getRandomName();
-    setName(mapName);
-  };
+function CatanBoard({landfields, numbers}) {
 
   return (
-    <div catanBoard>
-      <Btn
-        style={{ marginTop: "20px" }}
-        onClick={handleShuffleClick}
-        variant="contained"
-        content="SHUFFLE"
-        className="Btn"
-      />
+    <div>
+
       <HexagonRow
         ports={portsArr}
         portIdx={0}

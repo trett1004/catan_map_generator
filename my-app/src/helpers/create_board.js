@@ -1,3 +1,5 @@
+import react from 'react';
+
 var dockerNames = require('docker-names');
 
 // creating the array for landfields with the background images for the hexagons. background images are applied via css classes e.g. 'wood' or 'weat'
@@ -14,8 +16,8 @@ const portsArr = ['port3to1', 'water', 'weatPort', 'water', 'water', 'stonePort'
 
 
 // shuffle the backgroundimages
-const shufflelImages = ({ landfields }) => {
-    const shuffledElements = [...landfields];
+const shufflelImages = () => {
+    const shuffledElements = [...landfieldsArr];
     for (let i = shuffledElements.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         // swap
@@ -26,8 +28,8 @@ const shufflelImages = ({ landfields }) => {
 };
 
 // shuffle the numbers
-const shuffleNumberArray = ({numbers, shuffledElements}) => {
-    const shuffledNumbers = [...numbers];
+const shuffleNumberArray = ({ shuffledElements }) => {
+    const shuffledNumbers = [...fieldNumbersArr];
     for (let i = shuffledNumbers.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         // swap

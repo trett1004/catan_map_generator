@@ -1,4 +1,4 @@
-import React from "React";
+import React from "react";
 
 const getClass = (idx, idxAdder, numbers) => {
     // check it it s -1 than hide, else if  6 or 8 than make red, else leave it normal
