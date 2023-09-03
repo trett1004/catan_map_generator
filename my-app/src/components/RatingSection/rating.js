@@ -25,8 +25,18 @@ export function RatingSection({ landfields, numbers, mapName, dbData, setData })
           setValue(newValue);
         }}
       />
-      <Btn onClick={() => handleRateClick(landfields, numbers, setAlert, value, mapName, dbData, setData)} content="RATE" />
-      <div>{alert ? <GreenAlert content="Rating received. Please Update page to view" severity="success" /> : <></>}</div>
+      <Btn onClick={() =>
+        handleRateClick(landfields, numbers, setAlert, value, mapName, dbData, setData)}
+        content="RATE"
+      />
+      <div>
+        {alert ?
+          <GreenAlert
+          content="Rating received. Please Update page to view"
+          severity="success"
+          /> :
+          <></>}
+      </div>
     </Box>
   );
 }
