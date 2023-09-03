@@ -2,7 +2,6 @@ import Btn from "./Btn";
 import {shufflelImages, shuffleNumberArray, getRandomName} from "../../helpers/create_board.js";
 
 function ShuffleBtn({setLandfields, setNumbers, setName}) {
-
     const handleShuffleClick = () => {
         const shuffledElements = shufflelImages();
         setLandfields(shuffledElements);
@@ -14,11 +13,11 @@ function ShuffleBtn({setLandfields, setNumbers, setName}) {
       };
 
     return (
-        <Btn
+      <Btn
         style={{ marginTop: "20px" }}
         onClick={handleShuffleClick}
         variant="contained"
-        content="SHUFFLE"
+        content="SHUFFLE THE BOARD"
         className="Btn"
       />
     )

@@ -10,8 +10,8 @@ import Rating from "@mui/material/Rating";
 
 import Btn from "../Btn/Btn.js";
 
-function createData(rating, votes, mapName) {
-  return { rating, votes, mapName };
+function createData(rating, votes, mapName, _id) {
+  return { rating, votes, mapName, _id };
 }
 
 function TableOfRatings({
@@ -32,7 +32,7 @@ function TableOfRatings({
       );
       const averageRating = sumOfRatings / ratingArr.length;
       // return average Rating, number of votes and the name of the map
-      return createData(averageRating, ratingArr.length, element["mapName"]);
+      return createData(averageRating, ratingArr.length, element["mapName"], element._id);
     });
     // Sort the tableData array according to best averagerating in descending order after mapping all the elements so the table displays the top rated maps
     tableData.sort((a, b) => b.rating - a.rating);
@@ -66,7 +66,7 @@ function TableOfRatings({
               };
               return (
                 <TableRow
-                  key={row.rating}
+                  key={row._id}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell align="left">{row.mapName}</TableCell>
