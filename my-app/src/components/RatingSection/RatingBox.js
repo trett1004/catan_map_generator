@@ -5,6 +5,7 @@ import Typography from "@mui/material/Typography";
 
 import Btn from "../Btn/Btn.js";
 import GreenAlert from "../Alert/Alert.js";
+import "./RatingBox.css"
 
 export function RatingBox({ landfields, numbers, mapName, dbData, setData }) {
   const [value, setValue] = React.useState(2.5);

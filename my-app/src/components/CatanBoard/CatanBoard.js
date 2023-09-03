@@ -5,7 +5,6 @@ function CatanBoard({landfields, numbers}) {
 
   return (
     <div>
-
       <HexagonRow
         ports={portsArr}
         portIdx={0}

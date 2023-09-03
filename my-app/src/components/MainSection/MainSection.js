@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import CatanBoard from "../CatanBoard/CatanBoard";
 import ShuffleBtn from "../Btn/ShuffleBtn";
 import MapName from "../MapName/MapName";
-import RatingSection from "../RatingSection/rating_section";
+import RatingSection from "../RatingSection/RatingSection";
 import { landfieldsArr, fieldNumbersArr } from "../../helpers/create_board.js";
 
 function MainSection() {

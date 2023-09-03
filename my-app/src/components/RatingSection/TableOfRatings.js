@@ -9,6 +9,7 @@ import Paper from "@mui/material/Paper";
 import Rating from "@mui/material/Rating";
 
 import Btn from "../Btn/Btn.js";
+import "./TableOfRatings.css"
 
 function createData(rating, votes, mapName, _id) {
   return { rating, votes, mapName, _id };

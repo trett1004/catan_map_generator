@@ -11,7 +11,7 @@ function App() {
     <div className="main">
       <div className="header">
         <Typography variant="h2" component="legend">
-          Catan Map Generator
+          Catan Map Master
         </Typography>
       </div>
       <MainSection />

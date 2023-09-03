@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-import { RatingBox } from "./rating_box.js";
-import TableOfRatings from "./table_of_ratings.js";
+import { RatingBox } from "./RatingBox.js";
+import TableOfRatings from "./TableOfRatings.js";
 
 
 function RatingSection({ setLandfields, setNumbers, setName, landfields, numbers, mapName }) {
