@@ -11,8 +11,20 @@ const getClass = (idx, idxAdder, numbers) => {
                 : "hexagonBg";
 }
 
-// this component creates a row of hexagons, using the props from the instance of the component you can steer which fields and numbers are displayed.
-export const HexagonRow = ({ landfields, numbers, className, idxAdder, arrayStart, arrayEnd, ports, portIdx, portIdxEnd, ...props }) => {
+// this component creates a row of hexagons, using the props from the instance
+// of the component you can steer which fields and numbers are displayed.
+export const HexagonRow = ({
+    landfields,
+    numbers,
+    className,
+    idxAdder,
+    arrayStart,
+    arrayEnd,
+    ports,
+    portIdx,
+    portIdxEnd,
+    ...props
+}) => {
     return (
         <div className={className}>
             {/* starting water fields on the left */}
@@ -28,13 +40,19 @@ export const HexagonRow = ({ landfields, numbers, className, idxAdder, arrayStar
             {arrayEnd !== 0 ? (
                 landfields.slice(arrayStart, arrayEnd).map((element, idx) => (
                     <div key={idx} className={element}>
-                        <div className={getClass(idx, idxAdder, numbers)}>{numbers[idx + idxAdder]}</div>
+                        <div className={getClass(idx, idxAdder, numbers)}>
+                            {numbers[idx + idxAdder]}
+                        </div>
                     </div>
                 ))
                 // water fields most upper and most lowest row
             ) : (
                 ports.slice(portIdx, portIdxEnd).map((element, idx) => (
-                    <div key={idx} className={(portIdx === 0 ? 'portRotation60Deg ' : 'portRotation200Deg ') + element}>
+                    <div key={idx} className={(
+                        portIdx === 0 ?
+                        'portRotation60Deg ' :
+                        'portRotation200Deg ') + element}
+                    >
                         <div className='hidden'>{ports[portIdx + idx]}</div>
                     </div>
                 ))
@@ -42,12 +60,14 @@ export const HexagonRow = ({ landfields, numbers, className, idxAdder, arrayStar
             {/* continuing with water fields on the right */}
             {arrayEnd !== 0 && ports?.slice(portIdx + 1, portIdx + 2).map((element, idx) => {
                 return (
-                    <div key={idx} className={`${idx === 0 ? "portRotation180Deg" : ""} ${element}`}>
+                    <div
+                        key={idx}
+                        className={`${idx === 0 ? "portRotation180Deg" : ""} ${element}`}
+                    >
                         <div className='hidden'>{ports[portIdxEnd]}</div>
                     </div>
                 )
-            }
-            )}
+            })}
         </div>
     );
 }

@@ -1,4 +1,4 @@
-import { HexagonRow } from "../HexagonRow/HexagonRow";
+import { HexagonRow } from "./HexagonRow";
 import { portsArr } from "../../helpers/create_board.js";
 
 function CatanBoard({landfields, numbers}) {
