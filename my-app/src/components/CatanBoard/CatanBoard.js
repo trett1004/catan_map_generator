@@ -1,5 +1,3 @@
-import react, {useState} from 'react';
-
 import { HexagonRow } from "../HexagonRow/HexagonRow";
 import { portsArr } from "../../helpers/create_board.js";
 

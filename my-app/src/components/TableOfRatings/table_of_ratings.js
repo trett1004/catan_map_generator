@@ -14,7 +14,7 @@ function createData(rating, votes, mapName) {
   return { rating, votes, mapName };
 }
 
-export default function DenseTable({
+function TableOfRatings({
   setLandfields,
   setNumbers,
   setName,
@@ -91,3 +91,5 @@ export default function DenseTable({
     </>
   );
 }
+
+export default TableOfRatings;

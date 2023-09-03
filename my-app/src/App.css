@@ -190,6 +190,15 @@
   color: red;
 }
 
+.ratingSection {
+  margin-top: 3em;
+}
+
+.TableOfRatings {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
 .tableHeader {
   align-self: flex-start;
 }

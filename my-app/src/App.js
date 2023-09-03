@@ -1,21 +1,13 @@
 // Project external imports
 import React, { useState, useEffect } from "react";
+
 // Import Container from '@mui/material/Container';
-import { BasicRating } from "./components/Rating/rating.js";
-import DenseTable from "./components/Table/table_of_ratings.js";
+import { RatingSection } from "./components/RatingSection/rating.js";
+import TableOfRatings from "./components/TableOfRatings/table_of_ratings.js";
 import Typography from "@mui/material/Typography";
 
 // Project internal imports
-import {
-  shufflelImages,
-  landfieldsArr,
-  shuffleNumberArray,
-  fieldNumbersArr,
-  getRandomName,
-  portsArr,
-} from "./helpers/create_board.js";
-import Btn from "./components/Btn/Btn.js";
-import HexagonRow from "./components/HexagonRow/HexagonRow";
+import { landfieldsArr, fieldNumbersArr } from "./helpers/create_board.js";
 import CatanBoard from "./components/CatanBoard/CatanBoard";
 import MapName from "./components/MapName/MapName.js";
 import ShuffleBtn from "./components/Btn/ShuffleBtn";
@@ -45,8 +37,6 @@ function App() {
       .catch((err) => console.error(err));
   }, []);
 
-
-
   return (
     <div className="main">
       <div className="header">
@@ -55,10 +45,11 @@ function App() {
         </Typography>
       </div>
       <ShuffleBtn
-          setLandfields={setLandfields}
-          setNumbers={setNumbers}
-          setName={setName}
+        setLandfields={setLandfields}
+        setNumbers={setNumbers}
+        setName={setName}
       />
+      <MapName mapName={mapName} />
       <CatanBoard
         setLandfields={setLandfields}
         setNumbers={setNumbers}
@@ -66,27 +57,26 @@ function App() {
         numbers={numbers}
         setName={setName}
       />
-      <MapName mapName={mapName} />
-
       {databaseExists && (
         <>
-          <br></br>
-          <br></br>
-          <BasicRating
-            landfields={landfields}
-            numbers={numbers}
-            mapName={mapName}
-            dbData={dbData}
-            setData={setData}
-          />
-          <br></br>
-          <DenseTable
-            setLandfields={setLandfields}
-            setNumbers={setNumbers}
-            setName={setName}
-            dbData={dbData}
-            setData={setData}
-          />
+          <div className="ratingSection">
+            <RatingSection
+              landfields={landfields}
+              numbers={numbers}
+              mapName={mapName}
+              dbData={dbData}
+              setData={setData}
+            />
+          </div>
+          <div className="TableOfRatings">
+            <TableOfRatings
+              setLandfields={setLandfields}
+              setNumbers={setNumbers}
+              setName={setName}
+              dbData={dbData}
+              setData={setData}
+            />
+          </div>
         </>
       )}
     </div>

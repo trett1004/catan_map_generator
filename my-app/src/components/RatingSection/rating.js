@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import Typography from '@mui/material/Typography';
@@ -7,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import Btn from '../Btn/Btn.js';
 import GreenAlert from '../Alert/Alert.js';
 
-export function BasicRating({ landfields, numbers, mapName, dbData, setData }) {
+export function RatingSection({ landfields, numbers, mapName, dbData, setData }) {
   const [value, setValue] = React.useState(2.5);
   const [alert, setAlert] = React.useState(false);
 

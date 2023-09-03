@@ -1,5 +1,3 @@
-import react from 'react';
-
 var dockerNames = require('docker-names');
 
 // creating the array for landfields with the background images for the hexagons. background images are applied via css classes e.g. 'wood' or 'weat'
