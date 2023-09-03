@@ -12,7 +12,7 @@ function MainSection() {
   const [mapName, setName] = useState();
 
   return (
-    <div>
+    <>
       <ShuffleBtn
         setLandfields={setLandfields}
         setNumbers={setNumbers}
@@ -34,7 +34,7 @@ function MainSection() {
         setNumbers={setNumbers}
         setName={setName}
       />
-    </div>
+    </>
   );
 }
 

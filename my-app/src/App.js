@@ -4,7 +4,7 @@ import Typography from "@mui/material/Typography";
 // Project internal imports
 import MainSection from "./components/MainSection/MainSection.js"
 
-import "./App.scss";
+import "./App.css";
 
 function App() {
   return (

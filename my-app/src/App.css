@@ -10,11 +10,6 @@
   align-items: center;
 }
 
-.mapName {
-  margin: 30px 0px 20px 0px;
-  align-items: center;
-}
-
 .hexagonField {
   display: grid;
 }
