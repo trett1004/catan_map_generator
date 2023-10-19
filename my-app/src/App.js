@@ -2,7 +2,7 @@
 import Typography from "@mui/material/Typography";
 
 // Project internal imports
-import MainSection from "./components/MainSection/MainSection.js"
+import MainSection from "./components/MainSection/MainSection.js";
 
 import "./App.css";
 
@@ -11,10 +11,10 @@ function App() {
     <div className="main">
       <div className="header">
         <Typography variant="h2" component="legend">
-          Catan Map Master
+          Catan Map Gen
         </Typography>
       </div>
-      <MainSection />
+      <MainSection data-testid="mainSection" />
     </div>
   );
 }
