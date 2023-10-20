@@ -1,3 +1,4 @@
 # Ignore all files in a specific directory
-/ExampleArray.json
+/server/ExampleArray.json
+.DS_Store
 
