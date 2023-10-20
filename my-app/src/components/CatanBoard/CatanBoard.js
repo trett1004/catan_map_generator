@@ -1,10 +1,10 @@
 import { HexagonRow } from "./HexagonRow";
 import { portsArr } from "../../helpers/create_board.js";
 
-function CatanBoard({landfields, numbers}) {
-
+function CatanBoard({ landfields, numbers }) {
   return (
     <div>
+      {/* Upper row with 4 water fields */}
       <HexagonRow
         ports={portsArr}
         portIdx={0}
@@ -16,7 +16,7 @@ function CatanBoard({landfields, numbers}) {
         idxAdder={0}
         className="hexagonRow fourWaters"
       />
-
+      {/* Second row with 3 landfields and 1 water field on most left and most right */}
       <HexagonRow
         ports={portsArr}
         portIdx={4}
@@ -73,7 +73,7 @@ function CatanBoard({landfields, numbers}) {
         className="hexagonRow three"
       />
 
-      {/* Last row of water hexagon fields */}
+      {/* {/* Lowest row with 4 water fields */}
       <HexagonRow
         ports={portsArr}
         portIdx={14}
