@@ -22,7 +22,7 @@ function ShuffleBtn({ setLandfields, setNumbers, setName }) {
       <Btn
         onClick={handleShuffleClick}
         variant="contained"
-        content="SHUFFLE THE BOARD"
+        content="SHUFFLE THE FIELDS"
         color="success"
         size="large"
       />
