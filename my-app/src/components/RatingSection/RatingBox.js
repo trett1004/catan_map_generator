@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 
 import Btn from "../Btn/Btn.js";
 import GreenAlert from "../Alert/Alert.js";
-import "./RatingBox.css"
+import "./RatingBox.css";
 
 export function RatingBox({ landfields, numbers, mapName, dbData, setData }) {
   const [value, setValue] = React.useState(2.5);
@@ -15,8 +15,7 @@ export function RatingBox({ landfields, numbers, mapName, dbData, setData }) {
     <Box
       sx={{
         "& > legend": { mt: 2 },
-      }}
-    >
+      }}>
       <Typography variant="h5" component="legend">
         Please rate the map
       </Typography>
@@ -43,12 +42,7 @@ export function RatingBox({ landfields, numbers, mapName, dbData, setData }) {
         content="RATE"
       />
       <div>
-        {alert && (
-          <GreenAlert
-            content="Rating received. Please Update page to view"
-            severity="success"
-          />
-        )}
+        {alert && <GreenAlert content="Rating received" severity="success" />}
       </div>
     </Box>
   );
@@ -106,7 +100,7 @@ const handleRateClick = (
     })
     .then((_) => {
       setAlert(true);
-      window.setTimeout(() => setAlert(false), 2000);
+      window.setTimeout(() => setAlert(false), 2500);
     })
     .catch((err) => console.log(err));
 };
