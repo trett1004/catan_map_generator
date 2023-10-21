@@ -10,6 +10,7 @@ import "./RatingBox.css";
 export function RatingBox({ landfields, numbers, mapName, dbData, setData }) {
   const [value, setValue] = React.useState(2.5);
   const [alert, setAlert] = React.useState(false);
+  const [alertFlickrPreventer, setAlertFlickrPreventer] = React.useState(true);
 
   return (
     <Box
@@ -41,8 +42,10 @@ export function RatingBox({ landfields, numbers, mapName, dbData, setData }) {
         }
         content="RATE"
       />
-      <div>
-        {alert && <GreenAlert content="Rating received" severity="success" />}
+      <div class="flickerPreventer">
+        <div>
+          {alert && <GreenAlert content="Rating received" severity="success" />}
+        </div>
       </div>
     </Box>
   );

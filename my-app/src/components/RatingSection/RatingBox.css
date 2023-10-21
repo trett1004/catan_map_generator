@@ -1,4 +1,9 @@
 .ratingBox {
-    margin-top: 3em;
-  }
-  
+  margin-top: 3em;
+}
+
+.flickerPreventer {
+  border-width: 2px;
+  /* background-color: aqua; */
+  min-height: 3em;
+}
