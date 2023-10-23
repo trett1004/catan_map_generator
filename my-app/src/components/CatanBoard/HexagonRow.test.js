@@ -10,7 +10,7 @@ import {
 
 describe("Component HexagonRow ", () => {
   ////////////////////// First Row //////////////////////
-  test(" first row with only water fields renders correctly", () => {
+  test("First row renders correctly (only water fields)", () => {
     render(
       <HexagonRow
         ports={portsArr}
@@ -25,8 +25,32 @@ describe("Component HexagonRow ", () => {
       />
     );
     //Assert
-    const waterFieldOnLeftSide = screen.queryByTestId("water-hexagon-on-left");
-    expect(waterFieldOnLeftSide).toBeNull();
+    // outer Div class that renders the number of hexagons
+    // const componentFirstChild = screen.query
+    const { container } = render(
+      <HexagonRow
+        ports={portsArr}
+        portIdx={0}
+        portIdxEnd={4}
+        landfields={landfieldsArr}
+        numbers={fieldNumbersArr}
+        arrayStart={0}
+        arrayEnd={0}
+        idxAdder={0}
+        className="hexagonRow fourWaters"
+      />
+    );
+
+    const firstChild = container.getElementsByClassName("hexagonRow");
+    expect(firstChild.length).toBe(1);
+    const fieldAmount = container.getElementsByClassName("fourWaters");
+    expect(fieldAmount.length).toBe(1);
+
+    // Waterfield on left side
+    const waterFieldOnLeftSide = container.getElementsByClassName(
+      "water-hexagon-on-left"
+    );
+    expect(waterFieldOnLeftSide.length).toBe(0);
 
     const waterFieldOnRightSide = screen.queryByTestId(
       "water-hexagon-on-right"
@@ -53,7 +77,7 @@ describe("Component HexagonRow ", () => {
   });
 
   ////////////////////// Second Row //////////////////////
-  test(" second row renders correctly", () => {
+  test("Second row renders correctly", () => {
     render(
       <HexagonRow
         ports={portsArr}
@@ -72,10 +96,10 @@ describe("Component HexagonRow ", () => {
     // Left water field of the row
     const waterFieldOnLeftSide = screen.queryByTestId("water-hexagon-on-left");
     expect(waterFieldOnLeftSide).toHaveClass("water");
-    const waterFieldOnLeftSideHidden = screen.queryByTestId(
+    const waterHiddenWritingLeft = screen.queryByTestId(
       "hexagon-water-left-writing"
     );
-    expect(waterFieldOnLeftSideHidden).toHaveClass("hidden");
+    expect(waterHiddenWritingLeft).toHaveClass("hidden");
 
     // 3 Landfields in the middle of the row
     const landFields = screen.queryAllByTestId("hexagon-land-field");
@@ -98,13 +122,13 @@ describe("Component HexagonRow ", () => {
     );
     expect(waterFieldOnRightSide).toHaveClass("stonePort");
     expect(waterFieldOnRightSide).toHaveClass("portRotation180Deg");
-    const waterFieldOnRightSideHidden = screen.queryByTestId(
+    const waterHiddenWritingRight = screen.queryByTestId(
       "hexagon-water-right-writing"
     );
-    expect(waterFieldOnRightSideHidden).toHaveClass("hidden");
+    expect(waterHiddenWritingRight).toHaveClass("hidden");
   });
   ////////////////////// Third Row //////////////////////
-  test(" third row renders correctly", () => {
+  test("Third row renders correctly", () => {
     render(
       <HexagonRow
         ports={portsArr}
@@ -121,10 +145,10 @@ describe("Component HexagonRow ", () => {
     // Left water field of the row
     const waterFieldOnLeftSide = screen.queryByTestId("water-hexagon-on-left");
     expect(waterFieldOnLeftSide).toHaveClass("port3to1");
-    const waterFieldOnLeftSideHidden = screen.queryByTestId(
+    const waterHiddenWritingLeft = screen.queryByTestId(
       "hexagon-water-left-writing"
     );
-    expect(waterFieldOnLeftSideHidden).toHaveClass("hidden");
+    expect(waterHiddenWritingLeft).toHaveClass("hidden");
 
     // 4 Landfields in the middle of the row
     const landFields = screen.queryAllByTestId("hexagon-land-field");
@@ -147,12 +171,13 @@ describe("Component HexagonRow ", () => {
       "water-hexagon-on-right"
     );
     expect(waterFieldOnRightSide).toHaveClass("water");
-    const waterFieldOnRightSideHidden = screen.queryByTestId(
+    const waterHiddenWritingRight = screen.queryByTestId(
       "hexagon-water-right-writing"
     );
-    expect(waterFieldOnRightSideHidden).toHaveClass("hidden");
+    expect(waterHiddenWritingRight).toHaveClass("hidden");
   });
-  test(" third row renders correctly", () => {
+  ////////////////////// Fourth Row //////////////////////
+  test("Fourth row renders correctly", () => {
     render(
       <HexagonRow
         ports={portsArr}
@@ -169,10 +194,10 @@ describe("Component HexagonRow ", () => {
     // Left water field of the row
     const waterFieldOnLeftSide = screen.queryByTestId("water-hexagon-on-left");
     expect(waterFieldOnLeftSide).toHaveClass("water");
-    const waterFieldOnLeftSideHidden = screen.queryByTestId(
+    const waterHiddenWritingLeft = screen.queryByTestId(
       "hexagon-water-left-writing"
     );
-    expect(waterFieldOnLeftSideHidden).toHaveClass("hidden");
+    expect(waterHiddenWritingLeft).toHaveClass("hidden");
 
     // 4 Landfields in the middle of the row
     const landFields = screen.queryAllByTestId("hexagon-land-field");
@@ -204,9 +229,142 @@ describe("Component HexagonRow ", () => {
     );
     expect(waterFieldOnRightSide).toHaveClass("port3to1");
     expect(waterFieldOnRightSide).toHaveClass("portRotation180Deg");
-    const waterFieldOnRightSideHidden = screen.queryByTestId(
+    const waterHiddenWritingRight = screen.queryByTestId(
       "hexagon-water-right-writing"
     );
-    expect(waterFieldOnRightSideHidden).toHaveClass("hidden");
+    expect(waterHiddenWritingRight).toHaveClass("hidden");
+  });
+
+  ////////////////////// Fifth Row //////////////////////
+  test("Fifth row renders correctly", () => {
+    render(
+      <HexagonRow
+        ports={portsArr}
+        portIdx={10}
+        portIdxEnd={11}
+        landfields={landfieldsArr}
+        numbers={fieldNumbersArr}
+        arrayStart={12}
+        arrayEnd={16}
+        idxAdder={12}
+        className="hexagonRow four"
+      />
+    );
+    // Left water field of the row
+    const waterFieldOnLeftSide = screen.queryByTestId("water-hexagon-on-left");
+    expect(waterFieldOnLeftSide).toBeInTheDocument();
+    expect(waterFieldOnLeftSide).toHaveClass("clayPort");
+    const waterHiddenwritingLeft = screen.getByTestId(
+      "hexagon-water-left-writing"
+    );
+    expect(waterHiddenwritingLeft).toBeInTheDocument();
+    expect(waterHiddenwritingLeft).toHaveClass("hidden");
+
+    // Landfields in the middle of fith row
+    const arrayStart = 12;
+    const landFields = screen.getAllByTestId("hexagon-land-field");
+    // console.log("landFields", landFields);
+    landFields.forEach((el, idx) => {
+      expect(el).toBeInTheDocument();
+      expect(el).toHaveClass(landfieldsArr[arrayStart + idx]);
+    });
+    // Right water field of the row
+    const waterFieldOnRightSide = screen.queryByTestId(
+      "water-hexagon-on-right"
+    );
+    expect(waterFieldOnRightSide).toBeInTheDocument();
+    expect(waterFieldOnRightSide).toHaveClass("water");
+    const waterHiddenWritingRight = screen.queryByTestId(
+      "hexagon-water-right-writing"
+    );
+    expect(waterHiddenWritingRight).toHaveClass("hidden");
+  });
+  ////////////////////// Sixth Row //////////////////////
+  test("Fifth row renders correctly", () => {
+    render(
+      <HexagonRow
+        ports={portsArr}
+        portIdx={12}
+        portIdxEnd={13}
+        landfields={landfieldsArr}
+        numbers={fieldNumbersArr}
+        arrayStart={16}
+        arrayEnd={19}
+        idxAdder={16}
+        className="hexagonRow three"
+      />
+    );
+    // Left water field of the row
+    const waterFieldOnLeftSide = screen.queryByTestId("water-hexagon-on-left");
+    expect(waterFieldOnLeftSide).toBeInTheDocument();
+    expect(waterFieldOnLeftSide).toHaveClass("water");
+    const waterHiddenwritingLeft = screen.getByTestId(
+      "hexagon-water-left-writing"
+    );
+    expect(waterHiddenwritingLeft).toBeInTheDocument();
+    expect(waterHiddenwritingLeft).toHaveClass("hidden");
+
+    // Landfields in the middle of fith row
+    const arrayStart = 16;
+    const landFields = screen.getAllByTestId("hexagon-land-field");
+    // console.log("landFields", landFields);
+    landFields.forEach((el, idx) => {
+      expect(el).toBeInTheDocument();
+      expect(el).toHaveClass(landfieldsArr[arrayStart + idx]);
+    });
+    // Right water field of the row
+    const waterFieldOnRightSide = screen.queryByTestId(
+      "water-hexagon-on-right"
+    );
+    expect(waterFieldOnRightSide).toBeInTheDocument();
+    expect(waterFieldOnRightSide).toHaveClass("sheepPort");
+    const waterHiddenWritingRight = screen.queryByTestId(
+      "hexagon-water-right-writing"
+    );
+    expect(waterHiddenWritingRight).toHaveClass("hidden");
+  });
+
+  ////////////////////// Seventh Row //////////////////////
+  test("Seventh row renders correctly (only water fields)", () => {
+    render(
+      <HexagonRow
+        ports={portsArr}
+        portIdx={14}
+        portIdxEnd={18}
+        landfields={landfieldsArr}
+        numbers={fieldNumbersArr}
+        arrayStart={0}
+        arrayEnd={0}
+        idxAdder={0}
+        className="hexagonRow fourWaters"
+      />
+    );
+    // Only Waterfields in this row
+    // Assert
+    const waterFieldOnLeftSide = screen.queryByTestId("water-hexagon-on-left");
+    expect(waterFieldOnLeftSide).toBeNull();
+
+    const waterFieldOnRightSide = screen.queryByTestId(
+      "water-hexagon-on-right"
+    );
+    expect(waterFieldOnRightSide).toBeNull();
+
+    const hexagonFieldsRotation = screen.queryAllByTestId(
+      "hexagon-water-field-port-rotation"
+    );
+    // is port rotation correct?
+    expect(hexagonFieldsRotation[0]).toHaveClass("port3to1");
+    expect(hexagonFieldsRotation[0]).toHaveClass("portRotation200Deg ");
+    expect(hexagonFieldsRotation[2]).toHaveClass("woodPort");
+    expect(hexagonFieldsRotation[2]).toHaveClass("portRotation200Deg ");
+
+    // are the writings for ports hidden (writings of numbers should be displayed, ports not?
+    const hexagonFieldsWaterWriting = screen.queryAllByTestId(
+      "hexagon-water-writing"
+    );
+    // 4 fields are iterated
+    hexagonFieldsWaterWriting.forEach((el) => {
+      expect(el).toHaveClass("hidden");
+    });
   });
 });

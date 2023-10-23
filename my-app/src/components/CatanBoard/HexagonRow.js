@@ -29,7 +29,7 @@ export const HexagonRow = ({
   ...props
 }) => {
   return (
-    <div className={className}>
+    <div className={className} data-testid="hexagonRow">
       {/* this div renders the water field on the left */}
       {/* e.g. for second row (pattern applies to all following divs):
     prop arrayEnd is 3, prop portIdx is 4, prop portIdxEnd is 5:
