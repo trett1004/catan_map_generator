@@ -280,7 +280,7 @@ describe("Component HexagonRow ", () => {
     expect(waterHiddenWritingRight).toHaveClass("hidden");
   });
   ////////////////////// Sixth Row //////////////////////
-  test("Fifth row renders correctly", () => {
+  test("Sixth row renders correctly", () => {
     render(
       <HexagonRow
         ports={portsArr}
