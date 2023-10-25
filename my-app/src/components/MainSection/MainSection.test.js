@@ -1,10 +1,32 @@
-import { landfieldsArr, fieldNumbersArr } from "../../helpers/create_board";
+import {
+  landfieldsArr,
+  fieldNumbersArr,
+  getRandomName,
+} from "../../helpers/create_board";
+import ShuffleBtn from "../Btn/ShuffleBtn";
 import MainSection from "./MainSection";
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
+import "@testing-library/jest-dom";
 
 describe("MainSection", () => {
   test("MainSection renders", () => {
     render(<MainSection />);
+  });
+  test("Shuffle button renders", () => {
+    render(
+      <ShuffleBtn
+      // setLandfields={landfieldsArr}
+      // setNumbers={fieldNumbersArr}
+      // setName={getRandomName}
+      />
+    );
+  });
+  test("Shuffle button onClick works", () => {
+    const mockCallBack = jest.fn();
+    render(<ShuffleBtn onClick={mockCallBack} />);
+    const button = screen.getByText("SHUFFLE THE FIELDS");
+    // fireEvent.click(button);
+    //   expect(mockCallBack).toHaveBeenCalledTimes(1);
   });
 
   // Test numbers

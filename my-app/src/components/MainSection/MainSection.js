@@ -17,6 +17,7 @@ function MainSection() {
         setLandfields={setLandfields}
         setNumbers={setNumbers}
         setName={setName}
+        data-testid="shuffleBtn"
       />
       <MapName mapName={mapName} />
       <CatanBoard
