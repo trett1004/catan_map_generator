@@ -10,7 +10,6 @@ import "./RatingBox.css";
 export function RatingBox({ landfields, numbers, mapName, dbData, setData }) {
   const [value, setValue] = React.useState(2.5);
   const [alert, setAlert] = React.useState(false);
-  const [alertFlickrPreventer, setAlertFlickrPreventer] = React.useState(true);
 
   return (
     <Box
@@ -21,6 +20,7 @@ export function RatingBox({ landfields, numbers, mapName, dbData, setData }) {
         Please rate the map
       </Typography>
       <Rating
+        data-testid="ratingStars"
         name="simple-controlled"
         precision={0.5}
         value={value}
@@ -42,7 +42,7 @@ export function RatingBox({ landfields, numbers, mapName, dbData, setData }) {
         }
         content="RATE"
       />
-      <div class="flickerPreventer">
+      <div className="flickerPreventer" data-testid="flickerPreventer">
         <div>
           {alert && <GreenAlert content="Rating received" severity="success" />}
         </div>

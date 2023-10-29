@@ -3,8 +3,14 @@ import React, { useState, useEffect } from "react";
 import { RatingBox } from "./RatingBox.js";
 import TableOfRatings from "./TableOfRatings.js";
 
-
-function RatingSection({ setLandfields, setNumbers, setName, landfields, numbers, mapName }) {
+function RatingSection({
+  setLandfields,
+  setNumbers,
+  setName,
+  landfields,
+  numbers,
+  mapName,
+}) {
   // Hooks
   const [dbData, setData] = React.useState(null);
   const [databaseExists, setDatabaseExists] = useState(false);

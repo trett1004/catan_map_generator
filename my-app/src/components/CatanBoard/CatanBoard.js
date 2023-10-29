@@ -3,7 +3,7 @@ import { portsArr } from "../../helpers/create_board.js";
 
 function CatanBoard({ landfields, numbers }) {
   return (
-    <div data-testid="wrapper">
+    <div data-testid="wrapper" className="boardContainer">
       {/* Upper row with 4 water fields */}
       <HexagonRow
         ports={portsArr}

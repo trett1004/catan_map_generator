@@ -41,7 +41,7 @@ export const HexagonRow = ({
             <div
               data-testid="water-hexagon-on-left"
               key={idx}
-              className={element}>
+              className={`${element} firefoxOffset`}>
               <div className="hidden" data-testid="hexagon-water-left-writing">
                 {ports[portIdx]}
               </div>
@@ -81,7 +81,9 @@ export const HexagonRow = ({
             <div
               data-testid="water-hexagon-on-right"
               key={idx}
-              className={`${idx === 0 ? "portRotation180Deg" : ""} ${element}`}>
+              className={`${
+                idx === 0 ? "portRotation180Deg" : ""
+              } ${element} firefoxOffset`}>
               <div className="hidden" data-testid="hexagon-water-right-writing">
                 {ports[portIdxEnd]}{" "}
               </div>

@@ -1,12 +1,30 @@
 .tableOfRatings {
-    margin-top: 2em;
-    margin-bottom: 2em;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.tableHeader {
+  align-self: flex-start;
+}
+
+.headerMapName {
+  align-self: center;
+}
+
+/* Mobile view (up to 768px) */
+@media screen and (min-width: 0px) and (max-width: 768px) {
+  .tableOfRatings {
+    width: 360px;
+    font-size: 10px;
   }
-  
-  .tableHeader {
-    align-self: flex-start;
+  .table-cell {
+    padding: 2px; /* Adjust padding as needed */
   }
-  
-  .headerMapName {
-    align-self: center;
+  tr {
+    margin: 4px; /* Adjust margin as needed */
   }
+  .table-cell {
+    font-size: 14px; /* Adjust font size as needed */
+    white-space: normal; /* Allow text wrapping */
+  }
+}
