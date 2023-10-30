@@ -11,11 +11,15 @@ const Btn = ({ content, onClick, ...props }) => {
   // table style
   const buttonStyleMobile = mediaqueryStyle;
   return mediaquery ? (
-    <Button {...props} onClick={onClick}>
+    <Button variant="outlined" {...props} onClick={onClick}>
       {content}
     </Button>
   ) : (
-    <Button style={buttonStyleMobile} {...props} onClick={onClick}>
+    <Button
+      style={buttonStyleMobile}
+      variant="outlined"
+      {...props}
+      onClick={onClick}>
       {content}
     </Button>
   );
