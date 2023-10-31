@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import Btn from "../Btn/Btn.js";
 import GreenAlert from "../Alert/Alert.js";
 import "./RatingBox.css";
+import { classes } from "../../helpers/theme";
 
 export function RatingBox({ landfields, numbers, mapName, dbData, setData }) {
   const [value, setValue] = React.useState(2.5);
@@ -16,7 +17,7 @@ export function RatingBox({ landfields, numbers, mapName, dbData, setData }) {
       sx={{
         "& > legend": { mt: 2 },
       }}>
-      <Typography variant="h5" component="legend">
+      <Typography sx={classes.h5Custom} variant="h5" component="legend">
         Please rate the map
       </Typography>
       <Rating
@@ -27,6 +28,7 @@ export function RatingBox({ landfields, numbers, mapName, dbData, setData }) {
         onChange={(event, newValue) => {
           setValue(newValue);
         }}
+        sx={classes.ratingMediaQuery}
       />
       <Btn
         onClick={() =>
@@ -40,6 +42,8 @@ export function RatingBox({ landfields, numbers, mapName, dbData, setData }) {
             setData
           )
         }
+        className="rateButton"
+        sx={classes.shuffleBtnMediaQuery}
         content="RATE"
       />
       <div className="flickerPreventer" data-testid="flickerPreventer">

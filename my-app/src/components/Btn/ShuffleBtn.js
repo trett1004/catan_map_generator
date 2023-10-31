@@ -5,15 +5,14 @@ import {
   getRandomName,
 } from "../../helpers/create_board.js";
 import "./ShuffleBtn.css";
+import { classes } from "../../helpers/theme";
 
 function ShuffleBtn({ setLandfields, setNumbers, setName }) {
   const handleShuffleClick = () => {
     const shuffledElements = shufflelImages();
     setLandfields(shuffledElements);
-
     const shuffledNumbers = shuffleNumberArray({ shuffledElements });
     setNumbers(shuffledNumbers);
-
     setName(getRandomName());
   };
 
@@ -25,6 +24,7 @@ function ShuffleBtn({ setLandfields, setNumbers, setName }) {
         content="SHUFFLE THE FIELDS"
         color="success"
         size="large"
+        sx={classes.shuffleBtnMediaQuery}
       />
     </div>
   );

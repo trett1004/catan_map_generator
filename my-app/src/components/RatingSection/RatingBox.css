@@ -7,3 +7,7 @@
   /* background-color: aqua; */
   min-height: 3em;
 }
+
+.rateButton {
+  margin-left: auto;
+}
