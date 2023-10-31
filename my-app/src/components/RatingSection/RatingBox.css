@@ -1,13 +1,29 @@
+.containerBox {
+  width: 17em;
+  display: flex;
+}
+
 .ratingBox {
   margin-top: 3em;
 }
+.containerTypographyAndRatingAndButton {
+  width: 14em;
+}
 
 .flickerPreventer {
+  margin-top: 0.5em;
   border-width: 2px;
-  /* background-color: aqua; */
   min-height: 3em;
+  min-width: 14em;
 }
 
 .rateButton {
-  margin-left: auto;
+}
+
+.rating {
+  width: 6em;
+}
+
+.alert {
+  width: 17em;
 }

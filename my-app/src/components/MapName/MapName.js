@@ -1,6 +1,6 @@
 import Typography from "@mui/material/Typography";
 import "./MapName.css";
-import { theme, classes } from "../../helpers/theme";
+import { classes } from "../../helpers/theme";
 
 function MapName(props) {
   return (

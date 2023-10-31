@@ -1,7 +1,9 @@
-import Alert from '@mui/material/Alert';
+import Alert from "@mui/material/Alert";
 
-const GreenAlert = ({content, severity, ...props}) => <Alert {...props} severity={severity}>{content}</Alert>
+const AlertField = ({ content, severity, ...props }) => (
+  <Alert {...props} severity={severity}>
+    {content}
+  </Alert>
+);
 
-
-
-export default GreenAlert;
+export default AlertField;
