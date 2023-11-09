@@ -1,3 +1,11 @@
+body {
+  background: radial-gradient(
+    ellipse at center,
+    #ffffff,
+    rgb(184, 155, 84) 120%
+  );
+}
+
 .main {
   display: flex;
   flex-direction: column;
